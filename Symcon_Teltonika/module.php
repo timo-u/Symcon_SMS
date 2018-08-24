@@ -119,7 +119,10 @@
 
 			if ($err) {
 				echo "cURL Error #:" . $err;
-			} else {
+				$this->SetStatus(202);
+				die;
+			} 
+			
 			if (strpos($response, 'out of range') === 0) 
 			{	
 				echo "Connection Successfull";

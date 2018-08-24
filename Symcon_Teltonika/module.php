@@ -28,7 +28,7 @@
 		}
 		public function SendTestMessage() {
 			
-			string $numer = $this->ReadPropertyString("TestNumber");
+			string $number = $this->ReadPropertyString("TestNumber");
 			string $message = $this->ReadPropertyString("TestMessage");
 			if (strlen(number)<5 || strlen(message)<3)
 			{

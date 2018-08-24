@@ -58,7 +58,7 @@
 			$curl = curl_init();
 
 			curl_setopt_array($curl, array(
-			CURLOPT_URL => $this->ReadPropertyString("Domain")."/cgi-bin/sms_list",
+			CURLOPT_URL => $this->ReadPropertyString("IPAddress")."/cgi-bin/sms_list",
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => "",
 			CURLOPT_MAXREDIRS => 10,
@@ -99,7 +99,7 @@
 			$curl = curl_init();
 
 			curl_setopt_array($curl, array(
-			CURLOPT_URL => $this->ReadPropertyString("Domain")."/cgi-bin/sms_read",
+			CURLOPT_URL => $this->ReadPropertyString("IPAddress")."/cgi-bin/sms_read",
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => "",
 			CURLOPT_MAXREDIRS => 10,
@@ -151,7 +151,7 @@
 			$curl = curl_init();
 
 			curl_setopt_array($curl, array(
-			CURLOPT_URL => $this->ReadPropertyString("Domain")."/cgi-bin/sms_delete",
+			CURLOPT_URL => $this->ReadPropertyString("IPAddress")."/cgi-bin/sms_delete",
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => "",
 			CURLOPT_MAXREDIRS => 10,
@@ -190,7 +190,7 @@
 			$curl = curl_init();
 
 			curl_setopt_array($curl, array(
-			CURLOPT_URL => $this->ReadPropertyString("Domain")."/cgi-bin/sms_delete",
+			CURLOPT_URL => $this->ReadPropertyString("IPAddress")."/cgi-bin/sms_delete",
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => "",
 			CURLOPT_MAXREDIRS => 10,

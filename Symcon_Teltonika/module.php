@@ -192,7 +192,7 @@
 			$curl = curl_init();
 
 			curl_setopt_array($curl, array(
-			CURLOPT_URL => $this->ReadPropertyString("IPAddress")."/cgi-bin/sms_delete",
+			CURLOPT_URL => $this->ReadPropertyString("IPAddress")."/cgi-bin/sms_send",
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => "",
 			CURLOPT_MAXREDIRS => 10,

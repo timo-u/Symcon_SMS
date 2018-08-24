@@ -30,7 +30,7 @@
 			
 			string $number = $this->ReadPropertyString("TestNumber");
 			string $message = $this->ReadPropertyString("TestMessage");
-			if (strlen(number)<5 || strlen(message)<3)
+			if (strlen($number)<5 || strlen($message)<3)
 			{
 				echo "Message or Number too short";
 				return;

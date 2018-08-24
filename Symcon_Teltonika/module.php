@@ -12,8 +12,8 @@
 			$this->RegisterPropertyString("IPAddress", "http://192.168.1.1:80");
 			$this->RegisterPropertyInteger("ReadMessagesIntervall", 10);
 			
-			$this->RegisterPropertyString("TestNumber", "+49 170 123456");
-			$this->RegisterPropertyString("TestMessage", "Test");
+			//$this->RegisterPropertyString("TestNumber", "+49 170 123456");
+			//$this->RegisterPropertyString("TestMessage", "Test");
 			
 			$this->RegisterTimer("UpdateMessages", $this->ReadPropertyInteger("ReadMessagesIntervall")*1000, 'RUT_GetMessages($_IPS[\'TARGET\']);');
 		}

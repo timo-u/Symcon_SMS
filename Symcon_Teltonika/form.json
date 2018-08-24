@@ -2,7 +2,7 @@
     "elements":
     [
         { "type": "ValidationTextBox", "name": "SMSUsername", "caption": "username" },
-        { "type": "ValidationTextBox", "name": "SMSPassword", "caption": "password" },
+        { "type": "PasswordTextBox", "name": "SMSPassword", "caption": "password" },
         { "type": "ValidationTextBox", "name": "IPAddress", "caption": "IP-Address" },
 		{ "type": "Select", "name": "ReadMessagesIntervall", "caption": "ReadMessagesIntervall",
             "options": [

@@ -26,7 +26,7 @@
 			
 		
 		}
-		public function SendMessage() {
+		public function SendTestMessage() {
 			
 			$numer = $this->ReadPropertyString("TestNumber");
 			$message = $this->ReadPropertyString("TestMessage");

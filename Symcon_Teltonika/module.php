@@ -120,7 +120,17 @@
 			if ($err) {
 				echo "cURL Error #:" . $err;
 			} else {
-			return $response== "out of range";
+			if (strpos($response, 'out of range') === 0) 
+			{	
+				echo "Connection Successfull";
+				$this->SetStatus(102);
+			}
+			else 
+			{
+				echo "Connection failed: "."\r\n" . $response ;
+				$this->SetStatus(201);
+			}
+			
 			}
 
 			}

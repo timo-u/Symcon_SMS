@@ -4,7 +4,7 @@
         { "type": "ValidationTextBox", "name": "SMSUsername", "caption": "username" },
         { "type": "ValidationTextBox", "name": "SMSPassword", "caption": "password" },
         { "type": "ValidationTextBox", "name": "IPAddress", "caption": "IP-Address" },
-		{ "type": "Select", "name": "ReceiveSMSIntervall", "caption": "ReceiveSMSIntervall",
+		{ "type": "Select", "name": "ReadMessagesIntervall", "caption": "ReadMessagesIntervall",
             "options": [
 				{ "label": "diabled", "value": 0 },
 				{ "label": "1 second", "value": 1 },
@@ -23,10 +23,11 @@
     ],
     "actions":
     [
-		{ "type": "Button", "label": "ListMessages",  "onClick": "echo RUT_ListMessages($id);" },
-		 { "type": "ValidationTextBox", "name": "TestNumber", "caption": "Number" },
+		{ "type": "Button", "label": "Check Authentication",  "onClick": "echo RUT_CheckConnection($id);" },
+		{ "type": "Button", "label": "List Messages",  "onClick": "echo RUT_ListMessages($id);" },
+		{ "type": "ValidationTextBox", "name": "TestNumber", "caption": "Number" },
         { "type": "ValidationTextBox", "name": "TestMessage", "caption": "Message" },
-		{ "type": "Button", "label": "ListMessages",  "onClick": "echo RUT_SendTestMessage($id);" }
+		{ "type": "Button", "label": "Send Test Message",  "onClick": "echo RUT_SendTestMessage($id);" }
     ],
     "status":
     [

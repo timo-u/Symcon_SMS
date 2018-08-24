@@ -33,7 +33,7 @@
 			if (strlen(number)<5 || strlen(message)<3)
 			{
 				echo "Message or Number too short";
-				return:
+				return;
 			}
 		
 			$result = $this->SendMessage(urlencode($numer), urlencode($message));

@@ -220,7 +220,7 @@
 			}
 			else				
 			{
-				IPS_LogMessage ("TeltonikaSMSGateway", $response);
+				IPS_LogMessage ("TeltonikaSMSGateway", $response."  Parameter:  username=".urlencode($this->ReadPropertyString("SMSUsername"))."&password=".urlencode($this->ReadPropertyString("SMSPassword"))."&number=".urlencode($phoneNumber)."&text=".urlencode($text));
 				return false;
 			}
 			

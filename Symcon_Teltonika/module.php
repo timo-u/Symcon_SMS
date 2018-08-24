@@ -36,9 +36,9 @@
 				return;
 			}
 		
-			$result = $this->SendMessage(urlencode($number), urlencode($message));
+			$result = $this->SendMessage($number, $message);
 		
-		if(result == true)
+		if($result == true)
 		{
 			echo "Message sent";
 		}
@@ -213,13 +213,24 @@
 			if ($err) {
 				echo "cURL Error #:" . $err;
 			} else {
-			return (strpos($response, 'OK') === 0);
+			if (strpos($response, 'OK') === 0)
+			{
+				IPS_LogMessage ("TeltonikaSMSGateway", $response);
+				return true;
+			}
+			else				
+			{
+				IPS_LogMessage ("TeltonikaSMSGateway", $response);
+				return false;
+			}
+			
+			
 			}
 
 			}
 			catch (Exception $e) {
 				echo 'Exception abgefangen: ',  $e->getMessage(), "\n";
-				return "";
+				return false;
 			}
 			
 		}

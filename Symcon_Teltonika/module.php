@@ -134,7 +134,6 @@
 				$this->SetStatus(201);
 			}
 			
-			}
 
 			}
 			catch (Exception $e) {

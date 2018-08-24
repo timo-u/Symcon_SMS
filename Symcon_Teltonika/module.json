@@ -1,0 +1,14 @@
+{
+	"id": "{E524191D-102D-4619-BFEF-126A4BE49F88}",
+	"name": "Teltonika",
+	"type": 1,
+	"vendor": "Teltonika",
+	"aliases": 
+	[
+		"Teltonika RUT955"
+	],
+	"parentRequirements": [],
+	"childRequirements": [],
+	"implemented": [],
+	"prefix": "RUT"
+}

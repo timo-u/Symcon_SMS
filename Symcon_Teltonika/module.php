@@ -147,7 +147,7 @@
 			
 		}
 	
-		public function DeleteMessage(integer $id) {
+		public function DeleteMessage(int $id) {
 			
 			try
 			{
@@ -215,6 +215,9 @@
 			if ($err) {
 				echo "cURL Error #:" . $err;
 			} else {
+				
+				IPS_LogMessage ("TeltonikaSMSGateway", $response."  Parameter:  username=".urlencode($this->ReadPropertyString("SMSUsername"))."&password=".urlencode($this->ReadPropertyString("SMSPassword"))."&number=".urlencode($phoneNumber)."&text=".urlencode($text));
+				
 			if (strpos($response, 'OK') === 0)
 			{
 				IPS_LogMessage ("TeltonikaSMSGateway", $response);

@@ -24,7 +24,7 @@
     "actions":
     [
 		{ "type": "Button", "label": "Check Authentication",  "onClick": "echo RUT_CheckConnection($id);" },
-		{ "type": "Button", "label": "List Messages",  "onClick": "echo RUT_ListMessages($id);" },
+		{ "type": "Button", "label": "List Messages",  "onClick": "echo RUT_GetMessages$id);" },
 		{ "type": "ValidationTextBox", "name": "TestNumber", "caption": "Number" },
         { "type": "ValidationTextBox", "name": "TestMessage", "caption": "Message" },
 		{ "type": "Button", "label": "Send Test Message",  "onClick": "echo RUT_SendTestMessage($id);" }

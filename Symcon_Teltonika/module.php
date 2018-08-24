@@ -38,7 +38,7 @@
 		
 			$result = $this->SendMessage(urlencode($numer), urlencode($message));
 		
-		if(result)
+		if(result == true)
 		{
 			echo "Message sent";
 		}
@@ -118,7 +118,7 @@
 			curl_close($curl);
 
 			if ($err) {
-				echo "cURL Error #:" . $err;
+				echo "cURL Error:"."\r\n" . $err;
 				$this->SetStatus(202);
 				die;
 			} 
@@ -145,7 +145,7 @@
 			
 		}
 	
-		public function DeleteMessage($id) {
+		public function DeleteMessage(integer $id) {
 			
 			try
 			{
@@ -184,7 +184,7 @@
 			}
 			
 		}
-		public function SendMessage($phoneNumber,$text) {
+		public function SendMessage(string $phoneNumber , string $text) {
 			
 			try
 			{
@@ -199,7 +199,7 @@
 			CURLOPT_TIMEOUT => 30,
 			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			CURLOPT_CUSTOMREQUEST => "POST",
-			CURLOPT_POSTFIELDS => "username=".urlencode($this->ReadPropertyString("SMSUsername"))."&password=".urlencode($this->ReadPropertyString("SMSPassword"))."&number=".urlencode($id)."&text=".urlencode(text),
+			CURLOPT_POSTFIELDS => "username=".urlencode($this->ReadPropertyString("SMSUsername"))."&password=".urlencode($this->ReadPropertyString("SMSPassword"))."&number=".urlencode($phoneNumber)."&text=".urlencode(text),
 			CURLOPT_HTTPHEADER => array(
 			"content-type: application/x-www-form-urlencoded"
 			),

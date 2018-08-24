@@ -28,15 +28,15 @@
 		}
 		public function SendTestMessage() {
 			
-			$numer = $this->ReadPropertyString("TestNumber");
-			$message = $this->ReadPropertyString("TestMessage");
+			string $numer = $this->ReadPropertyString("TestNumber");
+			string $message = $this->ReadPropertyString("TestMessage");
 			if (strlen(number)<5 || strlen(message)<3)
 			{
 				echo "Message or Number too short";
 				return;
 			}
 		
-			$result = $this->SendMessage(urlencode($numer), urlencode($message));
+			bool $result = $this->SendMessage(urlencode($numer), urlencode($message));
 		
 		if(result == true)
 		{
@@ -199,7 +199,7 @@
 			CURLOPT_TIMEOUT => 30,
 			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			CURLOPT_CUSTOMREQUEST => "POST",
-			CURLOPT_POSTFIELDS => "username=".urlencode($this->ReadPropertyString("SMSUsername"))."&password=".urlencode($this->ReadPropertyString("SMSPassword"))."&number=".urlencode($phoneNumber)."&text=".urlencode(text),
+			CURLOPT_POSTFIELDS => "username=".urlencode($this->ReadPropertyString("SMSUsername"))."&password=".urlencode($this->ReadPropertyString("SMSPassword"))."&number=".urlencode($phoneNumber)."&text=".urlencode($text),
 			CURLOPT_HTTPHEADER => array(
 			"content-type: application/x-www-form-urlencoded"
 			),

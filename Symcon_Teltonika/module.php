@@ -36,7 +36,7 @@
 				return;
 			}
 		
-			bool $result = $this->SendMessage(urlencode($numer), urlencode($message));
+			bool $result = $this->SendMessage(urlencode($number), urlencode($message));
 		
 		if(result == true)
 		{

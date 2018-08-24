@@ -1,11 +1,11 @@
 {
 	"id": "{E524191D-102D-4619-BFEF-126A4BE49F88}",
-	"name": "Teltonika",
+	"name": "Teltonika SMS Gateway",
 	"type": 1,
 	"vendor": "Teltonika",
 	"aliases": 
 	[
-		"Teltonika RUT955"
+		"Teltonika RUT955 SMS Gateway"
 	],
 	"parentRequirements": [],
 	"childRequirements": [],

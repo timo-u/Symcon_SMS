@@ -1,6 +1,6 @@
 <?
 
-	class Teltonika extends IPSModule {
+	class TeltonikaSMSGateway extends IPSModule {
 		
 		public function Create()
 		{

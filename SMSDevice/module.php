@@ -8,7 +8,7 @@
 			parent::Create();
 			
 			$this->RegisterPropertyString("PhoneNumber", "+49 0000 0000");
-			
+			$this->ForceParent("{E524191D-102D-4619-BFEF-126A4BE49F88}");
 		}
 
 		public function ApplyChanges() {
@@ -77,7 +77,7 @@
 			"sender" => $phoneNumber,
 			"text" => $text
 			];
-			 $this->SendDataToParent(json_encode(Array("DataID" => "{9402145A-5F74-484D-8F83-4B26C3D36343}", "Buffer" => $data->Buffer)));
+			 $this->SendDataToParent(json_encode(Array("DataID" => "{9402145A-5F74-484D-8F83-4B26C3D36343}", "Buffer" => $data)));
 			//$this->SendDataToParent($data) ;
 			
 			return true;

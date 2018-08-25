@@ -88,7 +88,7 @@
 				$this->SetStatus(201);
 				return;
 			}
-			
+			$this->SetStatus(102);
 			
 			$messages = explode("------------------------------",$response);
 			

@@ -125,7 +125,7 @@
 			"text" => $text,
 		]);
 	
-		SendDataToChildren($data); 
+		$this->SendDataToChildren($data); 
 		IPS_LogMessage ("TeltonikaSMSGateway", "Sender: ".$sender . " Text: ".$text);
 		}
 		

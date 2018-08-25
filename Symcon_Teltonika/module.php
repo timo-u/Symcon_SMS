@@ -38,7 +38,7 @@
 		$text = $data -> text;
 		$this->SendMessage($sender, $text);
 		//IPS_LogMessage ("TeltonikaSMSGateway ReceiveData", "ReceiveData Sender: ".$sender . " Text: ".$text);
-		$result = $this->SendMessage($sender, $message);
+		$result = $this->SendMessage($sender, $text);
 		}
 		
 		public function SendTestMessage() {

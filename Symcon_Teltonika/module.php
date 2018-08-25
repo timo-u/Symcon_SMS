@@ -221,7 +221,7 @@
 			$phoneNumber = str_replace('-', '', $phoneNumber);
 			
 			
-			if($this->ReadPropertyBoolean("DisableSending")
+			if($this->ReadPropertyBoolean("DisableSending")==true)
 			{
 				IPS_LogMessage ("TeltonikaSMSGateway", "Sending Disabled: try to send message to ". $phoneNumber . " with contet: ".$text);
 				return true;

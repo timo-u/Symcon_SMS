@@ -86,13 +86,13 @@
 			$messages = explode("------------------------------",$response);
 			
 			foreach ($messages as $message) {
-			$index = substr($message, strpos($message, "Index:")+7, strpos($message, "Date:") - strpos($message, "Index:") - 6 );
+			$index = substr($message, strpos($message, "Index:")+7, strpos($message, "Date:") - strpos($message, "Index:") - 8 );
 			$sender = substr($message, strpos($message, "Sender:")+8, strpos($message, "Text:") - strpos($message, "Sender:")-8);
 			$text = substr($message, strpos($message, "Text:")+6, strpos($message, "Status:")-strpos($message, "Text:")-6);
    
 			$this->MessageReceived($sender,$text);
 			//$this->DeleteMessage($index);
-			IPS_LogMessage ("TeltonikaSMSGateway", ">DeleteMessage(".$index.")");
+			IPS_LogMessage ("TeltonikaSMSGateway", "DeleteMessage(".$index.")");
 			}
 			
 			
@@ -110,7 +110,7 @@
 		}
 		
 		private function MessageReceived(string $sender , string $text) {
-		IPS_LogMessage ("TeltonikaSMSGateway", "Sender: ".$sender . " Text: ".$text);
+		IPS_LogMessage ("TeltonikaSMSGateway", "Sender: >".$sender . "< Text: >".$text."<");
 		}
 		
 		public function CheckConnection() {

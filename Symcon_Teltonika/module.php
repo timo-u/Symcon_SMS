@@ -11,7 +11,7 @@
 			$this->RegisterPropertyString("SMSPassword", "");
 			$this->RegisterPropertyString("IPAddress", "http://192.168.1.1:80");
 			$this->RegisterPropertyInteger("ReadMessagesIntervall", 10);
-			
+			$this->RegisterPropertyBoolean("DisableSending", false);
 			$this->RegisterPropertyString("TestNumber", "");
 			$this->RegisterPropertyString("TestMessage", "Test");
 			
@@ -29,8 +29,6 @@
 		private function SendTestMessage() {
 			
 			 $number = $this->ReadPropertyString("TestNumber");
-			 $number = str_replace(' ', '', $number);
-			 $number = str_replace('-', '', $number);
 			 $message = $this->ReadPropertyString("TestMessage");
 			if (strlen($number)<5 || strlen($message)<3)
 			{
@@ -218,6 +216,18 @@
 		}
 		public function SendMessage(string $phoneNumber , string $text) {
 			
+			
+			$phoneNumber = str_replace(' ', '', $phoneNumber);
+			$phoneNumber = str_replace('-', '', $phoneNumber);
+			
+			
+			if($this->ReadPropertyBoolean("DisableSending")
+			{
+				IPS_LogMessage ("TeltonikaSMSGateway", "Sending Disabled: try to send message to ". $phoneNumber . " with contet: ".$text);
+				return true;
+			}
+			
+			
 			try
 			{
 
@@ -245,17 +255,15 @@
 			if ($err) {
 				echo "cURL Error #:" . $err;
 			} else {
-				
-				IPS_LogMessage ("TeltonikaSMSGateway", $response."  Parameter:  username=".urlencode($this->ReadPropertyString("SMSUsername"))."&password=".urlencode($this->ReadPropertyString("SMSPassword"))."&number=".urlencode($phoneNumber)."&text=".urlencode($text));
-				
+			
 			if (strpos($response, 'OK') === 0)
 			{
-				IPS_LogMessage ("TeltonikaSMSGateway", $response);
+				IPS_LogMessage ("TeltonikaSMSGateway", "Send Message to ". $phoneNumber . " was successfull");
 				return true;
 			}
 			else				
 			{
-				IPS_LogMessage ("TeltonikaSMSGateway", $response."  Parameter:  username=".urlencode($this->ReadPropertyString("SMSUsername"))."&password=".urlencode($this->ReadPropertyString("SMSPassword"))."&number=".urlencode($phoneNumber)."&text=".urlencode($text));
+				IPS_LogMessage ("TeltonikaSMSGateway", $response."  Parameter: "."number=".urlencode($phoneNumber)."&text=".urlencode($text));
 				return false;
 			}
 			

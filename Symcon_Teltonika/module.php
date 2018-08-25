@@ -122,7 +122,7 @@
 		private function MessageReceived(string $sender , string $text) {
 		$data = json_encode([
 			"sender" => $sender,
-			"text" => $text,
+			"text" => $text
 		]);
 	
 		$this->SendDataToChildren($data); 

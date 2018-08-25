@@ -32,7 +32,7 @@
 		IPS_LogMessage ("TeltonikaSMSGateway ReceiveData", $JSONString);
 		// Empfangene Daten vom Gateway/Splitter
 		$data = json_decode($JSONString);
-		print_r $data;
+		print_r( $data );
 		
 		$data = $data['Buffer'];
 		

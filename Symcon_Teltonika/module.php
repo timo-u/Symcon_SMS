@@ -37,8 +37,7 @@
 		
 		$text = $data -> text;
 		$this->SendMessage($sender, $text);
-		//IPS_LogMessage ("TeltonikaSMSGateway ReceiveData", "ReceiveData Sender: ".$sender . " Text: ".$text);
-		$result = $this->SendMessage($sender, $text);
+	
 		}
 		
 		public function SendTestMessage() {
@@ -141,7 +140,7 @@
 		];
 	
 		//$this->SendDataToChildren($data); 
-		 $this->SendDataToChildren(json_encode(Array("DataID" => "{C78CF679-C945-463E-9F2C-10A9FAD05DD3}", "Buffer" => $data->Buffer)));
+		 $this->SendDataToChildren(json_encode(Array("DataID" => "{C78CF679-C945-463E-9F2C-10A9FAD05DD3}", "Buffer" => $data)));
 		IPS_LogMessage ("TeltonikaSMSGateway", "Sender: ".$sender . " Text: ".$text);
 		}
 		

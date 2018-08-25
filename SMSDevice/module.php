@@ -30,9 +30,10 @@
 		
 		$phoneNumber = str_replace(' ', '', $this->ReadPropertyString("PhoneNumber"));
 		$phoneNumber = str_replace('-', '', $phoneNumber);
+		$data = $data -> Buffer;
 		
-		$sender = $data['sender'];
-		$text = $data['text'];
+		$sender = $data -> sender;
+		$text = $data -> text;
 		IPS_LogMessage ("SMSDevice", "ReceiveData Sender: ".$sender . " Text: ".$text);
 		if($phoneNumber == $sender) 
 			

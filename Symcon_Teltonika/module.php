@@ -26,6 +26,20 @@
 			
 		
 		}
+		
+		public function ReceiveData($JSONString) {
+			
+		IPS_LogMessage ("TeltonikaSMSGateway ReceiveData", $JSONString);
+		// Empfangene Daten vom Gateway/Splitter
+		$data = json_decode($JSONString);
+		
+		
+		$sender = $data['sender'];
+		$text = $data['text'];
+		IPS_LogMessage ("TeltonikaSMSGateway ReceiveData", "ReceiveData Sender: ".$sender . " Text: ".$text);
+		
+		}
+		
 		public function SendTestMessage() {
 			
 			 $number = $this->ReadPropertyString("TestNumber");

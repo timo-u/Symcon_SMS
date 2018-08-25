@@ -27,7 +27,7 @@
 		
 		}
 		
-		public function ReceiveData($JSONString) {
+		public function ForwardData($JSONString) {
 			
 		IPS_LogMessage ("TeltonikaSMSGateway ReceiveData", $JSONString);
 		// Empfangene Daten vom Gateway/Splitter

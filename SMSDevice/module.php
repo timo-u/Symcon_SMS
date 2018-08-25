@@ -15,8 +15,8 @@
 			//Never delete this line!
 			parent::ApplyChanges();
 			
-			$phoneNumber = str_replace(' ', '', $phoneNumber);
-			$phoneNumber = str_replace('-', '', $phoneNumber);
+			//$phoneNumber = str_replace(' ', '', $phoneNumber);
+			//$phoneNumber = str_replace('-', '', $phoneNumber);
 			
 		
 		}

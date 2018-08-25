@@ -26,7 +26,7 @@
 			
 		
 		}
-		public function SendTestMessage() {
+		private function SendTestMessage() {
 			
 			 $number = $this->ReadPropertyString("TestNumber");
 			 $number = str_replace(' ', '', $number);
@@ -83,6 +83,14 @@
 			} else {
 			//echo $response;
 			
+			
+			if (strpos($response, 'Bad username or password') === 0) 
+			{
+				$this->SetStatus(201);
+				return;
+			}
+			
+			
 			$messages = explode("------------------------------",$response);
 			
 			foreach ($messages as $message) {
@@ -112,7 +120,7 @@
 		}
 		
 		private function MessageReceived(string $sender , string $text) {
-		IPS_LogMessage ("TeltonikaSMSGateway", "Sender: >".$sender . "< Text: >".$text."<");
+		IPS_LogMessage ("TeltonikaSMSGateway", "Sender: ".$sender . " Text: ".$text);
 		}
 		
 		public function CheckConnection() {
@@ -169,7 +177,7 @@
 			
 		}
 	
-		public function DeleteMessage(int $id) {
+		private function DeleteMessage(int $id) {
 			
 			try
 			{

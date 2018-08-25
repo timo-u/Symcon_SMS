@@ -87,8 +87,8 @@
 			
 			foreach ($messages as $message) {
 			$index = substr($message, strpos($message, "Index:")+7, strpos($message, "Date:") - strpos($message, "Index:") - 8 );
-			$sender = substr($message, strpos($message, "Sender:")+8, strpos($message, "Text:") - strpos($message, "Sender:")-8);
-			$text = substr($message, strpos($message, "Text:")+6, strpos($message, "Status:")-strpos($message, "Text:")-6);
+			$sender = substr($message, strpos($message, "Sender:")+8, strpos($message, "Text:") - strpos($message, "Sender:")-9);
+			$text = substr($message, strpos($message, "Text:")+6, strpos($message, "Status:")-strpos($message, "Text:")-7);
    
 			$this->MessageReceived($sender,$text);
 			//$this->DeleteMessage($index);

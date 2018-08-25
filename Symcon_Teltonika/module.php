@@ -83,7 +83,7 @@
 			} else {
 			echo $response;
 			
-			$messages = explode("------------------------------",$respone)
+			$messages = explode("------------------------------",$respone);
 			
 			foreach ($messages as $message) {
 			$index = substr($message, strpos($message, "Index:")+7, strpos($message, "Date:"));

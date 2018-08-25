@@ -93,8 +93,8 @@
 			$text = substr($message, strpos($message, "Text:")+6, strpos($message, "Status:")-strpos($message, "Text:")-7);
    
 			$this->MessageReceived($sender,$text);
-			//$this->DeleteMessage($index);
-			IPS_LogMessage ("TeltonikaSMSGateway", "DeleteMessage(".$index.")");
+			$this->DeleteMessage($index);
+			
 			}
 			
 			
@@ -198,7 +198,7 @@
 			if ($err) {
 				echo "cURL Error #:" . $err;
 			} else {
-			echo $response;
+			IPS_LogMessage ("TeltonikaSMSGateway", "DeleteMessage(".$id.")");
 			}
 
 			}

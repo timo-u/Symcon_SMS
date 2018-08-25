@@ -1,0 +1,16 @@
+{
+    "elements":
+    [
+        { "type": "ValidationTextBox", "name": "PhoneNumber", "caption": "PhoneNumber" }
+    ],
+    "actions":
+    [
+		{ "type": "Button", "label": "Send Test Message",  "onClick": "echo SMS_SendTestMessage($id);" }
+    ],
+    "status":
+    [
+        { "code": 102, "icon": "active", "caption": "Login information valid" },
+        { "code": 201, "icon": "error", "caption": "Authentication failed" },
+		{ "code": 202, "icon": "error", "caption": "Connection Failed" }
+    ]
+}

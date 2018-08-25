@@ -60,7 +60,7 @@
 		
 	
 		public function MessageReceived(string $sender , string $text) {
-		IPS_LogMessage ("SMSDevice", "Sender: ".$sender . " Text: ".$text);
+		IPS_LogMessage ("SMSDevice MessageReceived", "Sender: ".$sender . " Text: ".$text);
 		}
 		
 		
@@ -77,7 +77,7 @@
 			"sender" => $phoneNumber,
 			"text" => $text
 			];
-			IPS_LogMessage ("SMSDevice SendMessage", json_encode($data));
+			//IPS_LogMessage ("SMSDevice SendMessage", json_encode($data));
 			$this->SendDataToParent(json_encode(Array("DataID" => "{9402145A-5F74-484D-8F83-4B26C3D36343}", "Buffer" => $data)));
 			//$this->SendDataToParent(json_encode($data)) ;
 			

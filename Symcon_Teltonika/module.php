@@ -28,18 +28,17 @@
 		}
 		
 		public function ForwardData($JSONString) {
-			
-		IPS_LogMessage ("TeltonikaSMSGateway ReceiveData", $JSONString);
-		// Empfangene Daten vom Gateway/Splitter
+		
+		// Empfangene Daten vom Device
 		$data = json_decode($JSONString);
-		print_r( $data );
 		
 		$data = $data -> Buffer;
-		
 		$sender = $data -> sender;
-		$text = $data -> text;
-		IPS_LogMessage ("TeltonikaSMSGateway ReceiveData", "ReceiveData Sender: ".$sender . " Text: ".$text);
 		
+		$text = $data -> text;
+		$this->SendMessage($sender, $text);
+		//IPS_LogMessage ("TeltonikaSMSGateway ReceiveData", "ReceiveData Sender: ".$sender . " Text: ".$text);
+		$result = $this->SendMessage($sender, $message);
 		}
 		
 		public function SendTestMessage() {

@@ -82,6 +82,21 @@
 				echo "cURL Error #:" . $err;
 			} else {
 			echo $response;
+			
+			$messages = explode("------------------------------",$respone)
+			
+			foreach ($messages as $message) {
+			$index = substr($message, strpos($message, "Index:")+7, strpos($message, "Date:"));
+			$sender = substr($message, strpos($message, "Sender:")+8, strpos($message, "Text:"));
+			$text = substr($message, strpos($message, "Text:")+6, strpos($message, "Status:"));
+   
+			$this->MessageReceived($sender,$text);
+			//$this->DeleteMessage($index);
+			IPS_LogMessage ("TeltonikaSMSGateway", ">DeleteMessage(".$index.")");
+			}
+			
+			
+			
 			}
 
 			}
@@ -93,6 +108,11 @@
 			
 			
 		}
+		
+		private function MessageReceived(string $sender , string $text) {
+		IPS_LogMessage ("TeltonikaSMSGateway", "Sender: ".$sender . " Text: ".$text);
+		}
+		
 		public function CheckConnection() {
 			
 			try

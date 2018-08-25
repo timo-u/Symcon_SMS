@@ -1,13 +1,13 @@
 {
 	"id": "{875A27EE-FDDE-423B-9A12-84D4858AAC68}",
 	"name": "SMSDevice",
-	"type": 1,
+	"type": 3,
 	"vendor": "universal",
 	"aliases": 
 	[
 		"SMSDevice"
 	],
-	"parentRequirements": [{E524191D-102D-4619-BFEF-126A4BE49F88}],
+	"parentRequirements": ["{E524191D-102D-4619-BFEF-126A4BE49F88}"],
 	"childRequirements": [],
 	"implemented": [],
 	"prefix": "SMS"

@@ -79,7 +79,7 @@
 			];
 			IPS_LogMessage ("SMSDevice SendMessage", json_encode($data));
 			// $this->SendDataToParent(json_encode(Array("DataID" => "{9402145A-5F74-484D-8F83-4B26C3D36343}", "Buffer" => $data)));
-			$this->SendDataToParent($data) ;
+			$this->SendDataToParent(json_encode($data)) ;
 			
 			return true;
 			

@@ -7,8 +7,8 @@
 	[
 		"SMSDevice"
 	],
-	"parentRequirements": ["{E524191D-102D-4619-BFEF-126A4BE49F88}"],
+	"parentRequirements": [],
 	"childRequirements": [],
-	"implemented": [],
+	"implemented": ["{C78CF679-C945-463E-9F2C-10A9FAD05DD3}"],
 	"prefix": "SMS"
 }

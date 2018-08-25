@@ -8,7 +8,7 @@
 		"Teltonika RUT955 SMS Gateway"
 	],
 	"parentRequirements": [],
-	"childRequirements": [],
+	"childRequirements": ["{C78CF679-C945-463E-9F2C-10A9FAD05DD3}"],
 	"implemented": [],
 	"prefix": "RUT"
 }

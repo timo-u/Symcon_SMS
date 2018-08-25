@@ -77,6 +77,7 @@
 			"sender" => $phoneNumber,
 			"text" => $text,
 			]);
+			
 			$this->SendDataToParent($data) ;
 			
 			return true;

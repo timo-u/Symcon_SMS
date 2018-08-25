@@ -73,7 +73,7 @@
 			try
 			{
 
-			$data = [
+			$data = (object) [
 			"sender" => $phoneNumber,
 			"text" => $text
 			];

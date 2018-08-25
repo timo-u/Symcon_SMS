@@ -34,10 +34,10 @@
 		$data = json_decode($JSONString);
 		print_r( $data );
 		
-		$data = $data['Buffer'];
+		$data = $data -> Buffer;
 		
-		$sender = $data['sender'];
-		$text = $data['text'];
+		$sender = $data -> sender;
+		$text = $data -> text;
 		IPS_LogMessage ("TeltonikaSMSGateway ReceiveData", "ReceiveData Sender: ".$sender . " Text: ".$text);
 		
 		}

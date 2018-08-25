@@ -73,7 +73,7 @@
 			try
 			{
 
-			$data =  [
+			$data = [
 			"sender" => $phoneNumber,
 			"text" => $text
 			];

@@ -81,9 +81,9 @@
 			if ($err) {
 				echo "cURL Error #:" . $err;
 			} else {
-			echo $response;
+			//echo $response;
 			
-			$messages = explode("------------------------------",$respone);
+			$messages = explode("------------------------------",$response);
 			
 			foreach ($messages as $message) {
 			$index = substr($message, strpos($message, "Index:")+7, strpos($message, "Date:"));

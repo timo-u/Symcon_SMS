@@ -120,12 +120,13 @@
 		}
 		
 		private function MessageReceived(string $sender , string $text) {
-		$data = json_encode([
+		$data = [
 			"sender" => $sender,
 			"text" => $text
-		]);
+		];
 	
-		$this->SendDataToChildren($data); 
+		//$this->SendDataToChildren($data); 
+		 $this->SendDataToChildren(json_encode(Array("DataID" => "{C78CF679-C945-463E-9F2C-10A9FAD05DD3}", "Buffer" => $data->Buffer)));
 		IPS_LogMessage ("TeltonikaSMSGateway", "Sender: ".$sender . " Text: ".$text);
 		}
 		

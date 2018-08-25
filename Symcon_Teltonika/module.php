@@ -26,7 +26,7 @@
 			
 		
 		}
-		private function SendTestMessage() {
+		public function SendTestMessage() {
 			
 			 $number = $this->ReadPropertyString("TestNumber");
 			 $message = $this->ReadPropertyString("TestMessage");
@@ -78,6 +78,7 @@
 
 			if ($err) {
 				echo "cURL Error #:" . $err;
+				$this->SetStatus(202);
 			} else {
 			//echo $response;
 			
@@ -254,6 +255,7 @@
 
 			if ($err) {
 				echo "cURL Error #:" . $err;
+				$this->SetStatus(202);
 			} else {
 			
 			if (strpos($response, 'OK') === 0)

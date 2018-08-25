@@ -79,6 +79,7 @@
 			if ($err) {
 				echo "cURL Error #:" . $err;
 				$this->SetStatus(202);
+				return;
 			} else {
 			//echo $response;
 			

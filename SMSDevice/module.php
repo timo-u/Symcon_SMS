@@ -8,7 +8,8 @@
 			parent::Create();
 			
 			$this->RegisterPropertyString("PhoneNumber", "+49 0000 0000");
-			$this->ForceParent("{E524191D-102D-4619-BFEF-126A4BE49F88}");
+			//$this->ForceParent("{E524191D-102D-4619-BFEF-126A4BE49F88}");
+			$this->ConnectParent("{E524191D-102D-4619-BFEF-126A4BE49F88}");
 		}
 
 		public function ApplyChanges() {
@@ -34,11 +35,12 @@
 		
 		$sender = $data -> sender;
 		$text = $data -> text;
-		IPS_LogMessage ("SMSDevice", "ReceiveData Sender: ".$sender . " Text: ".$text);
+
 		if($phoneNumber == $sender) 
-			
+		{
 		IPS_LogMessage ("SMSDevice", "ReceiveData Sender: ".$sender . " Text: ".$text);
 		
+		}
 		}
 		
 		public function SendTestMessage() {
@@ -78,14 +80,9 @@
 			"sender" => $phoneNumber,
 			"text" => $text
 			];
-			//IPS_LogMessage ("SMSDevice SendMessage", json_encode($data));
-			$this->SendDataToParent(json_encode(Array("DataID" => "{9402145A-5F74-484D-8F83-4B26C3D36343}", "Buffer" => $data)));
-			//$this->SendDataToParent(json_encode($data)) ;
 			
-			return true;
+			return $this->SendDataToParent(json_encode(Array("DataID" => "{9402145A-5F74-484D-8F83-4B26C3D36343}", "Buffer" => $data)));
 			
-			
-
 			}
 			catch (Exception $e) {
 				echo 'Exception abgefangen: ',  $e->getMessage(), "\n";

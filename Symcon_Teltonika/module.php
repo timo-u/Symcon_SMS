@@ -36,7 +36,7 @@
 		$sender = $data -> sender;
 		
 		$text = $data -> text;
-		$this->SendMessage($sender, $text);
+		return $this->SendMessage($sender, $text);
 	
 		}
 		

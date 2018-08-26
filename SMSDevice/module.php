@@ -8,6 +8,8 @@
 			parent::Create();
 			
 			$this->RegisterPropertyString("PhoneNumber", "+49 0000 0000");
+			$this->RegisterPropertyInteger("ReceiveObjectID", 0);
+			
 			
 			//$this->ForceParent("{E524191D-102D-4619-BFEF-126A4BE49F88}");
 			$this->ConnectParent("{E524191D-102D-4619-BFEF-126A4BE49F88}");
@@ -41,7 +43,7 @@
 		{
 		IPS_LogMessage ("SMSDevice", "ReceiveData Sender: ".$sender . " Text: ".$text);
 		
-		$id = $this->ReadPropertyInteger("ReadMessagesIntervall");
+		$id = $this->ReadPropertyInteger("ReceiveObjectID");
 		
 		IPS_LogMessage ("SMSDevice", "SciptID = ".$id);
 		if ($id != 0)

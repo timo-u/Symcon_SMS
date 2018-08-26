@@ -47,7 +47,7 @@
 		
 		IPS_LogMessage ("SMSDevice", "SciptID = ".$id);
 		if ($id != 0)
-		IPS_RunScriptEx ($id, $data );
+		IPS_RunScriptEx($id, Array("sender" => $sender, "text" => $text));
 		
 		}
 		}

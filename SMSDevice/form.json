@@ -1,7 +1,8 @@
 {
     "elements":
     [
-        { "type": "ValidationTextBox", "name": "PhoneNumber", "caption": "PhoneNumber" }
+        { "type": "ValidationTextBox", "name": "PhoneNumber", "caption": "PhoneNumber" },
+		{ "type": "SelectScript", "name": "ReceiveObjectID", "caption": "ReceiveScpript" }
     ],
     "actions":
     [

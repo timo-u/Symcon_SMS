@@ -40,29 +40,6 @@
 	
 		}
 		
-		public function SendTestMessage() {
-			
-			 $number = $this->ReadPropertyString("TestNumber");
-			 $message = $this->ReadPropertyString("TestMessage");
-			if (strlen($number)<5 || strlen($message)<3)
-			{
-				echo "Message or Number too short";
-				return;
-			}
-		
-			$result = $this->SendMessage($number, $message);
-		
-		if($result == true)
-		{
-			echo "Message sent";
-		}
-		else
-		{
-			echo "Message not sent";
-		}
-		
-		}
-		
 		
 		public function GetMessages() {
 			
@@ -200,6 +177,7 @@
 	
 		private function DeleteMessage(int $id) {
 			
+			
 			try
 			{
 
@@ -243,6 +221,12 @@
 			$phoneNumber = str_replace(' ', '', $phoneNumber);
 			$phoneNumber = str_replace('-', '', $phoneNumber);
 			
+			if (strlen($phoneNumber)==0 || strlen($text)==0)
+			{
+				echo "Message or Number too short";
+				IPS_LogMessage ("TeltonikaSMSGateway", "Error: PhoneNumber or text is empty");
+				return false;
+			}
 			
 			if($this->ReadPropertyBoolean("DisableSending")==true)
 			{

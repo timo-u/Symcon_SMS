@@ -24,11 +24,11 @@
     ],
     "actions":
     [
-		{ "type": "Button", "label": "Check Authentication",  "onClick": "echo RUT_CheckConnection($id);" },
-		{ "type": "Button", "label": "Read Messages",  "onClick": "echo RUT_GetMessages($id);" },
+		{ "type": "Button", "label": "Check Authentication",  "onClick": "echo SMS_CheckConnection($id);" },
+		{ "type": "Button", "label": "Read Messages",  "onClick": "echo SMS_GetMessages($id);" },
 		{ "type": "ValidationTextBox", "name": "TestNumber", "caption": "Number" },
         { "type": "ValidationTextBox", "name": "TestMessage", "caption": "Message" },
-		{ "type": "Button", "label": "Send Test Message",  "onClick": "echo RUT_SendMessage($id, $TestNumber, $TestMessage);"  }
+		{ "type": "Button", "label": "Send Test Message",  "onClick": "echo SMS_SendMessage($id, $TestNumber, $TestMessage);"  }
     ],
     "status":
     [

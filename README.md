@@ -1,6 +1,6 @@
 # Symcon_SMS
 
-##Dieses Modul bietet erweiterte SMS-Funktionlitäten für IP-Symcon. 
+##Dieses Modul bietet erweiterte SMS-Funktionlitäten für IP-Symcon um ein Hardware SMS-Gateway. 
 
 ### Vorraussetzungen: 
  - IP-Symcon V.4.0 ([LINK](https://www.symcon.de))

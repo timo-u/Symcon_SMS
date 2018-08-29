@@ -5,7 +5,7 @@
 ### Vorraussetzungen: 
  - IP-Symcon V.4.0 ([LINK](https://www.symcon.de))
  - Teltonika-Router RUT955, RUT 950, RUT240  ([LINK](https://teltonika.lt/de/product/rut950/))
-** Erstellt und getestet wurde dieses Modul mit dem Teltonika RUT955. Dieses Modul sollte jedoch auch  mit den Routern RUT950 und RUT240 funktionieren (Erfahrungsberichte nehme ich gerne entgegen.
+** Erstellt und getestet wurde dieses Modul mit dem Teltonika RUT955. Dieses Modul sollte jedoch auch  mit den Routern RUT950 und RUT240 funktionieren (Erfahrungsberichte nehme ich gerne entgegen. **
 
 
 ### Modul URL:

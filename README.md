@@ -1,6 +1,6 @@
 # Symcon_SMS
 
-##Dieses Modul bietet erweiterte SMS-Funktionlitäten für IP-Symcon. 
+##Dieses Modul bietet erweiterte SMS-Funktionlitäten für IP-Symcon um ein Hardware SMS-Gateway. 
 
 
 ### Teltonika SMS Gateway  

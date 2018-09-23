@@ -10,7 +10,7 @@ declare(strict_types=1);
 
             $this->RegisterPropertyString('PhoneNumber', '+49 0000 0000');
             $this->RegisterPropertyInteger('ReceiveObjectID', 0);
-			$this->RegisterPropertyString('TestMessage', 'Test');
+            $this->RegisterPropertyString('TestMessage', 'Test');
 
             //$this->ForceParent("{E524191D-102D-4619-BFEF-126A4BE49F88}");
             $this->ConnectParent('{E524191D-102D-4619-BFEF-126A4BE49F88}');
@@ -20,7 +20,6 @@ declare(strict_types=1);
         {
             //Never delete this line!
             parent::ApplyChanges();
-
         }
 
         public function ReceiveData($JSONString)

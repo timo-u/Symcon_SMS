@@ -28,7 +28,7 @@
 		{ "type": "Button", "label": "Read Messages",  "onClick": "echo SMS_GetMessages($id);" },
 		{ "type": "ValidationTextBox", "name": "TestNumber", "caption": "Number" },
         { "type": "ValidationTextBox", "name": "TestMessage", "caption": "Message" },
-		{ "type": "Button", "label": "Send Test Message",  "onClick": "echo SMS_SendMessage($id, $TestNumber, $TestMessage);"  }
+		{ "type": "Button", "label": "Send Test Message",  "onClick": "echo SMS_SendMessageTo($id, $TestNumber, $TestMessage);"  }
     ],
     "status":
     [

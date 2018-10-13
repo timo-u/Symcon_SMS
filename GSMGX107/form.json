@@ -1,0 +1,59 @@
+{
+    "elements":
+    [
+        { "type": "ValidationTextBox", "name": "PhoneNumber", "caption": "Phone Number" },
+		{ "type": "ValidationTextBox", "name": "Pin", "caption": "Pin" },
+		{ "type": "Select", "name": "UpdateInterval", "caption": "Update Interval",
+            "options": [
+				{ "label": "diabled", "value": 0 },
+				{ "label": "5 minutes", "value": 300 },
+				{ "label": "10 minutes", "value": 600 },
+				{ "label": "15 minutes", "value": 900 },
+				{ "label": "30 minutes", "value": 1800 },
+				{ "label": "1 hour", "value": 3600 },
+				{ "label": "2 hours", "value": 7200 },
+				{ "label": "4 hours", "value": 14400 },	
+				{ "label": "6 hours", "value": 21600 },
+				{ "label": "8 hours", "value": 28800 },
+				{ "label": "12 hours", "value": 43200 },
+				{ "label": "24 hours", "value": 86400 },
+				{ "label": "48 hours", "value": 172800 }
+				
+        ]},
+		{ "type": "Select", "name": "Watchdog", "caption": "Connection Warning",
+		
+            "options": [
+				{ "label": "diabled", "value": 0 },
+				{ "label": "10 minutes", "value": 600 },
+				{ "label": "15 minutes", "value": 900 },
+				{ "label": "30 minutes", "value": 1800 },
+				{ "label": "1 hour", "value": 3600 },
+				{ "label": "2 hours", "value": 7200 },
+				{ "label": "4 hours", "value": 14400 },	
+				{ "label": "6 hours", "value": 21600 },
+				{ "label": "8 hours", "value": 28800 },
+				{ "label": "12 hours", "value": 43200 },
+				{ "label": "24 hours", "value": 86400 },
+				{ "label": "48 hours", "value": 172800 },
+				{ "label": "4 days", "value": 345600 }
+				
+        ]},
+		{ "type": "CheckBox", "name": "Logging", "caption": "Logging" }
+    ],
+    "actions":
+    [
+		{ "type": "Button", "label": "Set Output 1",  "onClick": "if(SMS_GX107SetOutput($id, 1 , true)) echo 'OK';"  },
+		{ "type": "Button", "label": "Reset Output 1",  "onClick": "if(SMS_GX107SetOutput($id, 1 , false)) echo 'OK';"  },
+		{ "type": "Button", "label": "Set Output 2",  "onClick": "if(SMS_GX107SetOutput($id, 2 , true)) echo 'OK';"  },
+		{ "type": "Button", "label": "Reset Output 2",  "onClick": "if(SMS_GX107SetOutput($id, 2 , false)) echo 'OK';"  },
+		{ "type": "Button", "label": "GetStatus",  "onClick": "if(SMS_GX107GetStatus($id)) echo 'OK';"  }
+   
+    ],
+    "status":
+    [
+		{ "code": 202, "icon": "error", "caption": "Connection Failed" },
+		{ "code": 203, "icon": "error", "caption": "Wrong pin format" },
+		{ "code": 204, "icon": "error", "caption": "Wrong Phone Number format" },
+		{ "code": 205, "icon": "error", "caption": "Offline" }
+    ]
+}

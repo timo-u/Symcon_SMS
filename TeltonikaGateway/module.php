@@ -16,7 +16,7 @@ declare(strict_types=1);
             $this->RegisterPropertyString('TestNumber', '');
             $this->RegisterPropertyString('TestMessage', 'Test');
 
-            $this->RegisterTimer('UpdateMessages', $this->ReadPropertyInteger('ReadMessagesIntervall') * 1000, 'RUT_GetMessages($_IPS[\'TARGET\']);');
+            $this->RegisterTimer('UpdateMessages', $this->ReadPropertyInteger('ReadMessagesIntervall') * 1000, 'SMS_GetMessages($_IPS[\'TARGET\']);');
         }
 
         public function ApplyChanges()
@@ -37,7 +37,7 @@ declare(strict_types=1);
             $sender = $data->sender;
 
             $text = $data->text;
-            return $this->SendMessage($sender, $text);
+            return $this->SendMessageTo($sender, $text);
         }
 
         public function GetMessages()
@@ -187,7 +187,7 @@ declare(strict_types=1);
             }
         }
 
-        public function SendMessage(string $phoneNumber, string $text)
+        public function SendMessageTo(string $phoneNumber, string $text)
         {
             $phoneNumber = str_replace(' ', '', $phoneNumber);
             $phoneNumber = str_replace('-', '', $phoneNumber);

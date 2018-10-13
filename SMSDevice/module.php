@@ -12,7 +12,6 @@ declare(strict_types=1);
             $this->RegisterPropertyInteger('ReceiveObjectID', 0);
             $this->RegisterPropertyString('TestMessage', 'Test');
 
-            //$this->ForceParent("{E524191D-102D-4619-BFEF-126A4BE49F88}");
             $this->ConnectParent('{E524191D-102D-4619-BFEF-126A4BE49F88}');
         }
 
@@ -46,12 +45,7 @@ declare(strict_types=1);
             }
         }
 
-        public function MessageReceived(string $sender, string $text)
-        {
-            IPS_LogMessage('SMSDevice MessageReceived', 'Sender: ' . $sender . ' Text: ' . $text);
-        }
-
-        public function SendMessage(string $text)
+        public function DeviceSendMessage(string $text)
         {
             $phoneNumber = str_replace(' ', '', $this->ReadPropertyString('PhoneNumber'));
             $phoneNumber = str_replace('-', '', $phoneNumber);

@@ -7,7 +7,7 @@
     "actions":
     [
 		{ "type": "ValidationTextBox", "name": "TestMessage", "caption": "Message" },
-		{ "type": "Button", "label": "Send Test Message",  "onClick": "echo SMS_SendMessage($id, $TestMessage);"  }
+		{ "type": "Button", "label": "Send Test Message",  "onClick": "echo SMS_DeviceSendMessage($id, $TestMessage);"  }
    
     ],
     "status":

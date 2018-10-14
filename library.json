@@ -1,10 +1,10 @@
 {
-	"id": "{FD06E8B6-EA70-4C38-AE16-78FF433F0D5E}",
+	"id": "{55C6D0FB-61B9-4591-B025-5EFCF3A4610A}",
 	"author": "Timo-u.de",
-	"name": "Symcon_SMS",
+	"name": "Symcon_Networking",
 	"url": "https://timo-u.de",
 	"compatibility": {
-		"version": "4.0"
+		"version": "5.0"
 	},
 	"version": "1.0",
 	"build": 0,

@@ -1,0 +1,39 @@
+{
+    "elements":
+    [
+        { "type": "ValidationTextBox", "name": "SMSUsername", "caption": "username" },
+        { "type": "PasswordTextBox", "name": "SMSPassword", "caption": "password" },
+        { "type": "ValidationTextBox", "name": "IPAddress", "caption": "IP-Address" },
+		{ "type": "Select", "name": "ReadMessagesIntervall", "caption": "ReadMessagesIntervall",
+            "options": [
+				{ "label": "diabled", "value": 0 },
+				{ "label": "1 second", "value": 1 },
+				{ "label": "2 seconds", "value": 2 },
+				{ "label": "3 seconds", "value": 3 },
+				{ "label": "4 seconds", "value": 4 },
+				{ "label": "5 seconds", "value": 5 },
+				{ "label": "10 seconds", "value": 10 },
+				{ "label": "15 seconds", "value": 15 },
+				{ "label": "20 seconds", "value": 20 },
+				{ "label": "30 seconds", "value": 30 },
+				{ "label": "60 seconds", "value": 60 },
+                { "label": "2 minutes", "value": 120 },
+				{ "label": "5 minutes", "value": 300 }
+        ]},
+		 { "type": "CheckBox", "name": "DisableSending", "caption": "Disable Sending" }
+    ],
+    "actions":
+    [
+		{ "type": "Button", "label": "Check Authentication",  "onClick": "echo SMS_CheckConnection($id);" },
+		{ "type": "Button", "label": "Read Messages",  "onClick": "echo SMS_GetMessages($id);" },
+		{ "type": "ValidationTextBox", "name": "TestNumber", "caption": "Number" },
+        { "type": "ValidationTextBox", "name": "TestMessage", "caption": "Message" },
+		{ "type": "Button", "label": "Send Test Message",  "onClick": "echo SMS_SendMessageTo($id, $TestNumber, $TestMessage);"  }
+    ],
+    "status":
+    [
+        { "code": 102, "icon": "active", "caption": "Login information valid" },
+        { "code": 201, "icon": "error", "caption": "Authentication failed" },
+		{ "code": 202, "icon": "error", "caption": "Connection Failed" }
+    ]
+}

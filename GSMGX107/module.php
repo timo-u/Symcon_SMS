@@ -123,21 +123,26 @@ declare(strict_types=1);
 				
                 if(!$this->startswith($text,'gx107 ')) 
 				{	
-				
+				$this->SendDebug("ReceiveData()", "Messagecontent does not start with 'gx107'", 0);
 				return;
 				}
 				
+				$text = str_replace("\r", " ",$text);
+				
 				// Translate Status Message German => English
-				$text = str_replace('aus','off',$text);
-				$text = str_replace('an','on',$text);
-				$text = str_replace('spannung','voltage',$text);
-			
+				$text = str_replace(' aus ',' off ',$text);
+				$text = str_replace(' ein ',' on ',$text);
+				$text = str_replace('spannung:','voltage:',$text);
+				
+				$this->SendDebug("ReceiveData()", "Translated Message: ". $text , 0);
+				
 				if (!((strpos($text, 'gsm') == false)||(strpos($text, 'voltage') == false)||(strpos($text, 'out1') == false)||(strpos($text, 'out2') == false)||(strpos($text, 'incall') == false)))
 				{
-					
+				$this->SendDebug("ReceiveData()", "MessageContent Match" , 0);
+				
 				SetValue($this->GetIDForIdent('GSM'), intval($this->between('gsm: ', '% akku',$text)));
 				SetValue($this->GetIDForIdent('In1'), ($this->between('in1: ', 'out1:',$text)=='high'));
-				SetValue($this->GetIDForIdent('Out1'), ($this->between('out1: ', 'out1:',$text)=='on'));
+				SetValue($this->GetIDForIdent('Out1'), ($this->between('out1: ', 'out2:',$text)=='on'));
 				SetValue($this->GetIDForIdent('Out2'), ($this->between('out2: ', 'incall:',$text)=='on'));
 				SetValue($this->GetIDForIdent('Voltage'), ($this->between('voltage: ', 'v adc:',$text)));
 				

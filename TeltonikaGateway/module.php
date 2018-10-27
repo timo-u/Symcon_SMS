@@ -88,7 +88,7 @@ declare(strict_types=1);
                         $text = substr($message, strpos($message, 'Text:') + 6, strpos($message, 'Status:') - strpos($message, 'Text:') - 7);
 
                         $this->MessageReceived($sender, $text);
-                        $this->DeleteMessage($index);
+                        $this->DeleteMessage(intval($index));
                     }
                 }
             } catch (Exception $e) {

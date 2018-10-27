@@ -27,12 +27,11 @@ declare(strict_types=1);
 
             $this->RegisterTimer('Update', $this->ReadPropertyInteger('UpdateInterval') * 1000, 'SMS_GX107GetStatus($_IPS[\'TARGET\']);');
             $this->RegisterTimer('WatchdogTimer', $this->ReadPropertyInteger('Watchdog') * 1000, 'SMS_WatchdogEvent($_IPS[\'TARGET\']);');
-			
-			$this->RegisterScript("Out1On", $this->Translate('Output 1 on'),'<? SMS_GX107SetOutput(IPS_GetParent($_IPS[\'SELF\']), 1 , true); ',20);
-			$this->RegisterScript("Out1Off", $this->Translate('Output 1 off'),'<? SMS_GX107SetOutput(IPS_GetParent($_IPS[\'SELF\']), 1 , false); ',21);
-			$this->RegisterScript("Out2On", $this->Translate('Output 2 on'),'<? SMS_GX107SetOutput(IPS_GetParent($_IPS[\'SELF\']), 2 , true); ',22);
-			$this->RegisterScript("Out1Ooff", $this->Translate('Output 2 off'),'<? SMS_GX107SetOutput(IPS_GetParent($_IPS[\'SELF\']), 2 , false); ',22);
-			
+
+            $this->RegisterScript('Out1On', $this->Translate('Output 1 on'), '<? SMS_GX107SetOutput(IPS_GetParent($_IPS[\'SELF\']), 1 , true); ', 20);
+            $this->RegisterScript('Out1Off', $this->Translate('Output 1 off'), '<? SMS_GX107SetOutput(IPS_GetParent($_IPS[\'SELF\']), 1 , false); ', 21);
+            $this->RegisterScript('Out2On', $this->Translate('Output 2 on'), '<? SMS_GX107SetOutput(IPS_GetParent($_IPS[\'SELF\']), 2 , true); ', 22);
+            $this->RegisterScript('Out1Ooff', $this->Translate('Output 2 off'), '<? SMS_GX107SetOutput(IPS_GetParent($_IPS[\'SELF\']), 2 , false); ', 22);
         }
 
         public function ApplyChanges()

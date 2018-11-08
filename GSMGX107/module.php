@@ -124,12 +124,6 @@ declare(strict_types=1);
                 $this->SendDebug('ReceiveData()', 'phonenumber match', 0);
 
                 $text = strtolower($text);
-
-                if (!$this->startswith($text, 'gx107 ')) {
-                    $this->SendDebug('ReceiveData()', "Messagecontent does not start with 'gx107'", 0);
-                    return;
-                }
-
                 $text = str_replace("\r", ' ', $text);
 
                 // Translate Status Message German => English

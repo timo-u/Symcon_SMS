@@ -97,7 +97,7 @@ declare(strict_types=1);
             }
         }
 
-        private function MessageReceived(string $sender, string $text)
+        function MessageReceived(string $sender, string $text)
         {
             $data = [
             'sender' => $sender,

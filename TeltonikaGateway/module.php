@@ -31,8 +31,8 @@ declare(strict_types=1);
         {
 
         // Empfangene Daten vom Device
-			$this->SendDebug('ForwardData()', ' $JSONString: ' . $JSONString, 0);
-		
+            $this->SendDebug('ForwardData()', ' $JSONString: ' . $JSONString, 0);
+
             $data = json_decode($JSONString);
 
             $data = $data->Buffer;
@@ -104,11 +104,10 @@ declare(strict_types=1);
             $data = [
             'sender' => $sender,
             'text'   => utf8_encode($text)
-			];
+            ];
 
             $this->SendDataToChildren(json_encode(['DataID' => '{C78CF679-C945-463E-9F2C-10A9FAD05DD3}', 'Buffer' => $data]));
-			$this->SendDebug('MessageReceived()', 'Sender: ' . $sender . ' Text: ' . $text, 0);
-           
+            $this->SendDebug('MessageReceived()', 'Sender: ' . $sender . ' Text: ' . $text, 0);
         }
 
         public function CheckConnection()
@@ -137,23 +136,23 @@ declare(strict_types=1);
 
                 if ($err) {
                     echo 'cURL Error:' . "\r\n" . $err;
-					$this->SendDebug('CheckConnection()', 'cURL Error:', 0);
+                    $this->SendDebug('CheckConnection()', 'cURL Error:', 0);
                     $this->SetStatus(202);
                     die;
                 }
 
                 if (strpos($response, 'out of range') === 0) {
                     echo 'Connection Successfull';
-					$this->SendDebug('CheckConnection()', 'Connection Successfull', 0);
+                    $this->SendDebug('CheckConnection()', 'Connection Successfull', 0);
                     $this->SetStatus(102);
                 } else {
                     echo 'Connection failed: ' . "\r\n" . $response;
-					$this->SendDebug('CheckConnection()', 'Connection failed: ' . "\r\n" . $response, 0);
+                    $this->SendDebug('CheckConnection()', 'Connection failed: ' . "\r\n" . $response, 0);
                     $this->SetStatus(201);
                 }
             } catch (Exception $e) {
                 echo 'Exception abgefangen: ',  $e->getMessage(), "\n";
-				$this->SendDebug('CheckConnection()', 'Exception: ',  $e->getMessage(), 0);
+                $this->SendDebug('CheckConnection()', 'Exception: ', $e->getMessage(), 0);
                 return false;
             }
         }
@@ -182,13 +181,10 @@ declare(strict_types=1);
 
                 curl_close($curl);
 
-                if ($err) 
-				{
+                if ($err) {
                     echo 'cURL Error #:' . $err;
-                } 
-				else 
-				{
-					$this->SendDebug('DeleteMessage()', 'ID: ' . $id  , 0);                   
+                } else {
+                    $this->SendDebug('DeleteMessage()', 'ID: ' . $id, 0);
                 }
             } catch (Exception $e) {
                 echo 'Exception abgefangen: ',  $e->getMessage(), "\n";
@@ -246,7 +242,7 @@ declare(strict_types=1);
                     }
                 }
             } catch (Exception $e) {
-                $this->SendDebug('SendMessageTo()', 'Exception abgefangen: ',  $e->getMessage(), 0);
+                $this->SendDebug('SendMessageTo()', 'Exception abgefangen: ', $e->getMessage(), 0);
                 return false;
             }
         }

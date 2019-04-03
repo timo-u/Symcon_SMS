@@ -35,7 +35,7 @@ declare(strict_types=1);
             $text = $data->text;
 
             if ($phoneNumber == $sender) {
-                IPS_LogMessage('SMSDevice', 'ReceiveData Sender: ' . $sender . ' Text: ' . $text);
+                $this->SendDebug('ReceiveData()', 'ReceiveData Sender: ' . $sender . ' Text: ' . $text, 0);
 
                 $id = $this->ReadPropertyInteger('ReceiveObjectID');
 

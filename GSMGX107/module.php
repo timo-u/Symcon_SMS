@@ -136,13 +136,13 @@ declare(strict_types=1);
                 if (!((strpos($text, 'gsm') == false) || (strpos($text, 'voltage') == false) || (strpos($text, 'out1') == false) || (strpos($text, 'out2') == false) || (strpos($text, 'incall') == false))) {
                     $this->SendDebug('ReceiveData()', 'MessageContent Match', 0);
 
-                    SetValue($this->GetIDForIdent('GSM'), intval($this->between('gsm: ', '% akku', $text)));
-                    SetValue($this->GetIDForIdent('In1'), ($this->between('in1: ', 'out1:', $text) == 'high'));
-                    SetValue($this->GetIDForIdent('Out1'), ($this->between('out1: ', 'out2:', $text) == 'on'));
-                    SetValue($this->GetIDForIdent('Out2'), ($this->between('out2: ', 'incall:', $text) == 'on'));
-                    SetValue($this->GetIDForIdent('Voltage'), ($this->between('voltage: ', 'v adc:', $text)));
+                    $this->SetValue('GSM', intval($this->between('gsm: ', '% akku', $text)));
+                    $this->SetValue('In1', ($this->between('in1: ', 'out1:', $text) == 'high'));
+                    $this->SetValue('Out1', ($this->between('out1: ', 'out2:', $text) == 'on'));
+                    $this->SetValue('Out2', ($this->between('out2: ', 'incall:', $text) == 'on'));
+                    $this->SetValue('Voltage', ($this->between('voltage: ', 'v adc:', $text)));
 
-                    SetValue($this->GetIDForIdent('ConnectionError'), false);
+                    $this->SetValue('ConnectionError', false);
                     $this->SetTimerInterval('WatchdogTimer', $this->ReadPropertyInteger('Watchdog') * 1000);
                     $this->SetStatus(102);
                 } else {

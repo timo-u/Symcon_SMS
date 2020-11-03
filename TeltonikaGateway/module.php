@@ -48,18 +48,18 @@ declare(strict_types=1);
                 $curl = curl_init();
 
                 curl_setopt_array($curl, [
-            CURLOPT_URL            => $this->ReadPropertyString('IPAddress') . '/cgi-bin/sms_list',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING       => '',
-            CURLOPT_MAXREDIRS      => 10,
-            CURLOPT_TIMEOUT        => 30,
-            CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST  => 'POST',
-            CURLOPT_POSTFIELDS     => 'username=' . urlencode($this->ReadPropertyString('SMSUsername')) . '&password=' . urlencode($this->ReadPropertyString('SMSPassword')),
-            CURLOPT_HTTPHEADER     => [
-            'content-type: application/x-www-form-urlencoded'
-            ],
-            ]);
+                    CURLOPT_URL            => $this->ReadPropertyString('IPAddress') . '/cgi-bin/sms_list',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING       => '',
+                    CURLOPT_MAXREDIRS      => 10,
+                    CURLOPT_TIMEOUT        => 30,
+                    CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST  => 'POST',
+                    CURLOPT_POSTFIELDS     => 'username=' . urlencode($this->ReadPropertyString('SMSUsername')) . '&password=' . urlencode($this->ReadPropertyString('SMSPassword')),
+                    CURLOPT_HTTPHEADER     => [
+                        'content-type: application/x-www-form-urlencoded'
+                    ],
+                ]);
 
                 $response = curl_exec($curl);
                 $err = curl_error($curl);
@@ -102,8 +102,8 @@ declare(strict_types=1);
         public function MessageReceived(string $sender, string $text)
         {
             $data = [
-            'sender' => $sender,
-            'text'   => utf8_encode($text)
+                'sender' => $sender,
+                'text'   => utf8_encode($text)
             ];
 
             $this->SendDataToChildren(json_encode(['DataID' => '{C78CF679-C945-463E-9F2C-10A9FAD05DD3}', 'Buffer' => $data]));
@@ -116,18 +116,18 @@ declare(strict_types=1);
                 $curl = curl_init();
 
                 curl_setopt_array($curl, [
-            CURLOPT_URL            => $this->ReadPropertyString('IPAddress') . '/cgi-bin/sms_read',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING       => '',
-            CURLOPT_MAXREDIRS      => 10,
-            CURLOPT_TIMEOUT        => 30,
-            CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST  => 'POST',
-            CURLOPT_POSTFIELDS     => 'username=' . urlencode($this->ReadPropertyString('SMSUsername')) . '&password=' . urlencode($this->ReadPropertyString('SMSPassword')),
-            CURLOPT_HTTPHEADER     => [
-            'content-type: application/x-www-form-urlencoded'
-            ],
-            ]);
+                    CURLOPT_URL            => $this->ReadPropertyString('IPAddress') . '/cgi-bin/sms_read',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING       => '',
+                    CURLOPT_MAXREDIRS      => 10,
+                    CURLOPT_TIMEOUT        => 30,
+                    CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST  => 'POST',
+                    CURLOPT_POSTFIELDS     => 'username=' . urlencode($this->ReadPropertyString('SMSUsername')) . '&password=' . urlencode($this->ReadPropertyString('SMSPassword')),
+                    CURLOPT_HTTPHEADER     => [
+                        'content-type: application/x-www-form-urlencoded'
+                    ],
+                ]);
 
                 $response = curl_exec($curl);
                 $err = curl_error($curl);
@@ -138,7 +138,7 @@ declare(strict_types=1);
                     echo 'cURL Error:' . "\r\n" . $err;
                     $this->SendDebug('CheckConnection()', 'cURL Error:', 0);
                     $this->SetStatus(202);
-                    die;
+                    exit;
                 }
 
                 if (strpos($response, 'out of range') === 0) {
@@ -163,18 +163,18 @@ declare(strict_types=1);
                 $curl = curl_init();
 
                 curl_setopt_array($curl, [
-            CURLOPT_URL            => $this->ReadPropertyString('IPAddress') . '/cgi-bin/sms_delete',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING       => '',
-            CURLOPT_MAXREDIRS      => 10,
-            CURLOPT_TIMEOUT        => 30,
-            CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST  => 'POST',
-            CURLOPT_POSTFIELDS     => 'username=' . urlencode($this->ReadPropertyString('SMSUsername')) . '&password=' . urlencode($this->ReadPropertyString('SMSPassword')) . '&number=' . $id,
-            CURLOPT_HTTPHEADER     => [
-            'content-type: application/x-www-form-urlencoded'
-            ],
-            ]);
+                    CURLOPT_URL            => $this->ReadPropertyString('IPAddress') . '/cgi-bin/sms_delete',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING       => '',
+                    CURLOPT_MAXREDIRS      => 10,
+                    CURLOPT_TIMEOUT        => 30,
+                    CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST  => 'POST',
+                    CURLOPT_POSTFIELDS     => 'username=' . urlencode($this->ReadPropertyString('SMSUsername')) . '&password=' . urlencode($this->ReadPropertyString('SMSPassword')) . '&number=' . $id,
+                    CURLOPT_HTTPHEADER     => [
+                        'content-type: application/x-www-form-urlencoded'
+                    ],
+                ]);
 
                 $response = curl_exec($curl);
                 $err = curl_error($curl);
@@ -211,18 +211,18 @@ declare(strict_types=1);
                 $curl = curl_init();
 
                 curl_setopt_array($curl, [
-            CURLOPT_URL            => $this->ReadPropertyString('IPAddress') . '/cgi-bin/sms_send',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING       => '',
-            CURLOPT_MAXREDIRS      => 10,
-            CURLOPT_TIMEOUT        => 30,
-            CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST  => 'POST',
-            CURLOPT_POSTFIELDS     => 'username=' . urlencode($this->ReadPropertyString('SMSUsername')) . '&password=' . urlencode($this->ReadPropertyString('SMSPassword')) . '&number=' . urlencode($phoneNumber) . '&text=' . urlencode($text),
-            CURLOPT_HTTPHEADER     => [
-            'content-type: application/x-www-form-urlencoded'
-            ],
-            ]);
+                    CURLOPT_URL            => $this->ReadPropertyString('IPAddress') . '/cgi-bin/sms_send',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING       => '',
+                    CURLOPT_MAXREDIRS      => 10,
+                    CURLOPT_TIMEOUT        => 30,
+                    CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST  => 'POST',
+                    CURLOPT_POSTFIELDS     => 'username=' . urlencode($this->ReadPropertyString('SMSUsername')) . '&password=' . urlencode($this->ReadPropertyString('SMSPassword')) . '&number=' . urlencode($phoneNumber) . '&text=' . urlencode($text),
+                    CURLOPT_HTTPHEADER     => [
+                        'content-type: application/x-www-form-urlencoded'
+                    ],
+                ]);
 
                 $response = curl_exec($curl);
                 $err = curl_error($curl);

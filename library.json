@@ -4,9 +4,9 @@
 	"name": "Symcon_SMS",
 	"url": "https://timo-u.de",
 	"compatibility": {
-		"version": "4.0"
+		"version": "6.0"
 	},
-	"version": "1.0",
+	"version": "1.1",
 	"build": 0,
 	"date": 0
 }

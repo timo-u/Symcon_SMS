@@ -1,17 +1,33 @@
 {
-    "elements":
-    [
-        { "type": "ValidationTextBox", "name": "PhoneNumber", "caption": "PhoneNumber" },
-		{ "type": "SelectScript", "name": "ReceiveObjectID", "caption": "Receive Scpript" }
-    ],
-    "actions":
-    [
-		{ "type": "ValidationTextBox", "name": "TestMessage", "caption": "Message" },
-		{ "type": "Button", "label": "Send Test Message",  "onClick": "echo SMS_DeviceSendMessage($id, $TestMessage);"  }
-   
-    ],
-    "status":
-    [
-		{ "code": 202, "icon": "error", "caption": "Connection Failed" }
-    ]
+  "elements": [
+    {
+      "type": "ValidationTextBox",
+      "name": "PhoneNumber",
+      "caption": "PhoneNumber"
+    },
+    {
+      "type": "SelectScript",
+      "name": "ReceiveObjectID",
+      "caption": "Receive Scpript"
+    }
+  ],
+  "actions": [
+    {
+      "type": "ValidationTextBox",
+      "name": "TestMessage",
+      "caption": "Message"
+    },
+    {
+      "type": "Button",
+      "label": "Send Test Message",
+      "onClick": "echo SMS_DeviceSendMessage($id, $TestMessage);"
+    }
+  ],
+  "status": [
+    {
+      "code": 202,
+      "icon": "error",
+      "caption": "Connection Failed"
+    }
+  ]
 }

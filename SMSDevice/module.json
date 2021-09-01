@@ -3,12 +3,15 @@
 	"name": "SMSDevice",
 	"type": 3,
 	"vendor": "universal",
-	"aliases": 
-	[
+	"aliases": [
 		"SMSDevice"
 	],
-	"parentRequirements": ["{9402145A-5F74-484D-8F83-4B26C3D36343}"],
+	"parentRequirements": [
+		"{9402145A-5F74-484D-8F83-4B26C3D36343}"
+	],
 	"childRequirements": [],
-	"implemented": ["{C78CF679-C945-463E-9F2C-10A9FAD05DD3}"],
+	"implemented": [
+		"{C78CF679-C945-463E-9F2C-10A9FAD05DD3}"
+	],
 	"prefix": "SMS"
 }

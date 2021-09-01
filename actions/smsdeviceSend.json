@@ -10,8 +10,12 @@
     ],
     "action": "SMS_DeviceSendMessage($_IPS['TARGET'], $_IPS['MESSAGE']);",
     "restrictions": {
-        "objectType": [ 1 ],
-        "variablmoduleIDeType": [ "{875A27EE-FDDE-423B-9A12-84D4858AAC68}" ]
+        "objectType": [
+            1
+        ],
+        "variablmoduleIDeType": [
+            "{875A27EE-FDDE-423B-9A12-84D4858AAC68}"
+        ]
     },
     "priority": 10,
     "locale": {

@@ -14,9 +14,6 @@ Die Leerzeichen und Bindestriche in der Telefonnummer werden herausgefiltert.
 ##### Pin
 Pin-Nummer des GSM-Moduls. Die Pin-Nummer wird in jerder Nachricht zur Validierung versendet.
 
-##### Logging
-Wenn das Logging aktiviert ist werden alle Variablen in der Instanz aufgezeichnet und können als Diagramm angezeigt werden.
-
 ##### Aktualisierungs-Intervall
 Das Aktualisierungs-Intervall gilt für die Abfrage des GSM-Moduls. In dem Dort eingestellten Zyklus wird der Status des GSM-Moduls abgerufen. 
 Wenn hier "deaktiviert" eingestellt ist werden keine selbstständigen Nachrichten an das Modul gesendet. 

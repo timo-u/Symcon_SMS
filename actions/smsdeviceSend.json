@@ -1,0 +1,25 @@
+{
+    "id": "{A715227B-921B-59F6-30E0-F4C99F3BBE49}",
+    "caption": "Send Message",
+    "form": [
+        {
+            "type": "ValidationTextBox",
+            "name": "MESSAGE",
+            "caption": "Message"
+        }
+    ],
+    "action": "SMS_DeviceSendMessage($_IPS['TARGET'], $_IPS['MESSAGE']);",
+    "restrictions": {
+        "objectType": [ 1 ],
+        "variablmoduleIDeType": [ "{875A27EE-FDDE-423B-9A12-84D4858AAC68}" ]
+    },
+    "priority": 10,
+    "locale": {
+        "de": {
+            "Send Message": "Nachricht senden",
+            "Message": "Nachricht",
+            "Send Message: {MESSAGE}": "Sende Nachricht: {MESSAGE}"
+        }
+    },
+    "format": "Send Message: {MESSAGE}"
+}

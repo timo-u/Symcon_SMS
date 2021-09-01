@@ -1,0 +1,37 @@
+{
+    "id": "{CDE25C46-445F-75EC-27DB-EDD0B97FCEB3}",
+    "caption": "Set Ouptut",
+    "form": [
+        { "type": "Select", "name": "CHANNEL", "caption": "Channel",
+            "options": [
+                { "caption": "OUT 1", "value": 1 },
+                { "caption": "OUT 2", "value": 2 }
+            ]
+        },
+        { "type": "Select", "name": "VALUE", "caption": "Value",
+            "options": [
+                { "caption": "Off", "value": false },
+                { "caption": "On", "value": true }
+            ]
+        }
+    ],
+    "action": "SMS_GX107SetOutput($_IPS['TARGET'], $_IPS['CHANNEL'],$_IPS['VALUE']);",
+    "restrictions": {
+        "objectType": [ 1 ],
+        "variablmoduleIDeType": [ "{B2E56829-8152-4417-8451-B47B59075867}" ]
+    },
+    "priority": 10,
+    "locale": {
+        "de": {
+            "Set Ouptut": "Ausgang setzen",
+            "Channel": "Kanal",
+            "OUT 1": "Ausgang 1",
+            "OUT 2": "Ausgang 2",
+            "On": "An",
+            "Off": "Aus",
+            "Value": "Wert",
+            "Set Channel {CHANNEL, number} to {VALUE}": "Set Kanal {CHANNEL, number} auf {VALUE}"
+        }
+    },
+    "format": "Set Channel {CHANNEL, number} to {VALUE}"
+}

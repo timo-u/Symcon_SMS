@@ -47,64 +47,47 @@ declare(strict_types=1);
             }
 
             $this->SetTimerInterval('Update', $this->ReadPropertyInteger('UpdateInterval') * 1000);
-
             $this->SetTimerInterval('WatchdogTimer', $this->ReadPropertyInteger('Watchdog') * 1000);
-
-            /*
-                        if ($this->ReadPropertyBoolean('Logging')) {
-                            $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
-
-                            AC_SetLoggingStatus($archiveId, $this->GetIDForIdent('Voltage'), true);
-                            AC_SetAggregationType($archiveId, $this->GetIDForIdent('Voltage'), 0); // 0 Standard, 1 Zähler
-                            AC_SetGraphStatus($archiveId, $this->GetIDForIdent('Voltage'), true);
-
-                            AC_SetLoggingStatus($archiveId, $this->GetIDForIdent('GSM'), true);
-                            AC_SetAggregationType($archiveId, $this->GetIDForIdent('GSM'), 0); // 0 Standard, 1 Zähler
-                            AC_SetGraphStatus($archiveId, $this->GetIDForIdent('GSM'), true);
-
-                            AC_SetLoggingStatus($archiveId, $this->GetIDForIdent('In1'), true);
-                            AC_SetAggregationType($archiveId, $this->GetIDForIdent('In1'), 0); // 0 Standard, 1 Zähler
-                            AC_SetGraphStatus($archiveId, $this->GetIDForIdent('In1'), true);
-
-                            AC_SetLoggingStatus($archiveId, $this->GetIDForIdent('Out1'), true);
-                            AC_SetAggregationType($archiveId, $this->GetIDForIdent('Out1'), 0); // 0 Standard, 1 Zähler
-                            AC_SetGraphStatus($archiveId, $this->GetIDForIdent('Out1'), true);
-
-                            AC_SetLoggingStatus($archiveId, $this->GetIDForIdent('Out2'), true);
-                            AC_SetAggregationType($archiveId, $this->GetIDForIdent('Out2'), 0); // 0 Standard, 1 Zähler
-                            AC_SetGraphStatus($archiveId, $this->GetIDForIdent('Out2'), true);
-
-                            AC_SetLoggingStatus($archiveId, $this->GetIDForIdent('ConnectionError'), true);
-                            AC_SetAggregationType($archiveId, $this->GetIDForIdent('ConnectionError'), 0); // 0 Standard, 1 Zähler
-                            AC_SetGraphStatus($archiveId, $this->GetIDForIdent('ConnectionError'), true);
-
-                            IPS_ApplyChanges($archiveId);
-                        } else {
-                            $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
-
-                            AC_SetLoggingStatus($archiveId, $this->GetIDForIdent('Voltage'), false);
-                            AC_SetGraphStatus($archiveId, $this->GetIDForIdent('Voltage'), false);
-
-                            AC_SetLoggingStatus($archiveId, $this->GetIDForIdent('GSM'), false);
-                            AC_SetGraphStatus($archiveId, $this->GetIDForIdent('GSM'), false);
-
-                            AC_SetLoggingStatus($archiveId, $this->GetIDForIdent('In1'), false);
-                            AC_SetGraphStatus($archiveId, $this->GetIDForIdent('In1'), false);
-
-                            AC_SetLoggingStatus($archiveId, $this->GetIDForIdent('Out1'), false);
-                            AC_SetGraphStatus($archiveId, $this->GetIDForIdent('Out1'), false);
-
-                            AC_SetLoggingStatus($archiveId, $this->GetIDForIdent('Out2'), false);
-                            AC_SetGraphStatus($archiveId, $this->GetIDForIdent('Out2'), false);
-
-                            AC_SetLoggingStatus($archiveId, $this->GetIDForIdent('ConnectionError'), false);
-                            AC_SetGraphStatus($archiveId, $this->GetIDForIdent('ConnectionError'), false);
-
-                            IPS_ApplyChanges($archiveId);
-                        }
-            */
             $this->SetStatus(104);
         }
+
+    public function EnableLogging()
+    {
+        $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
+
+        $arr = ['Voltage', 'GSM', 'In1', 'Out1', 'Out2', 'ConnectionError'];
+
+        foreach ($arr as &$ident) {
+            $id = @$this->GetIDForIdent($ident);
+
+            if ($id == 0) {
+                continue;
+            }
+            AC_SetLoggingStatus($archiveId, $id, true);
+            AC_SetAggregationType($archiveId, $id, 0); // 0 Standard, 1 Zähler
+            AC_SetGraphStatus($archiveId, $id, true);
+        }
+
+        IPS_ApplyChanges($archiveId);
+    }
+
+    public function DisableLogging()
+    {
+        $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
+        $arr = ['Voltage', 'GSM', 'In1', 'Out1', 'Out2', 'ConnectionError'];
+		
+        foreach ($arr as &$ident) {
+            $id = $this->GetIDForIdent($ident);
+            if ($id == 0) {
+                continue;
+            }
+            AC_SetLoggingStatus($archiveId, $id, false);
+            AC_SetGraphStatus($archiveId, $id, false);
+        }
+
+        IPS_ApplyChanges($archiveId);
+    }
+
 
         public function ReceiveData($JSONString)
         {

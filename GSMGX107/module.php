@@ -51,43 +51,42 @@ declare(strict_types=1);
             $this->SetStatus(104);
         }
 
-    public function EnableLogging()
-    {
-        $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
+        public function EnableLogging()
+        {
+            $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
 
-        $arr = ['Voltage', 'GSM', 'In1', 'Out1', 'Out2', 'ConnectionError'];
+            $arr = ['Voltage', 'GSM', 'In1', 'Out1', 'Out2', 'ConnectionError'];
 
-        foreach ($arr as &$ident) {
-            $id = @$this->GetIDForIdent($ident);
+            foreach ($arr as &$ident) {
+                $id = @$this->GetIDForIdent($ident);
 
-            if ($id == 0) {
-                continue;
+                if ($id == 0) {
+                    continue;
+                }
+                AC_SetLoggingStatus($archiveId, $id, true);
+                AC_SetAggregationType($archiveId, $id, 0); // 0 Standard, 1 Zähler
+                AC_SetGraphStatus($archiveId, $id, true);
             }
-            AC_SetLoggingStatus($archiveId, $id, true);
-            AC_SetAggregationType($archiveId, $id, 0); // 0 Standard, 1 Zähler
-            AC_SetGraphStatus($archiveId, $id, true);
+
+            IPS_ApplyChanges($archiveId);
         }
 
-        IPS_ApplyChanges($archiveId);
-    }
+        public function DisableLogging()
+        {
+            $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
+            $arr = ['Voltage', 'GSM', 'In1', 'Out1', 'Out2', 'ConnectionError'];
 
-    public function DisableLogging()
-    {
-        $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
-        $arr = ['Voltage', 'GSM', 'In1', 'Out1', 'Out2', 'ConnectionError'];
-		
-        foreach ($arr as &$ident) {
-            $id = $this->GetIDForIdent($ident);
-            if ($id == 0) {
-                continue;
+            foreach ($arr as &$ident) {
+                $id = $this->GetIDForIdent($ident);
+                if ($id == 0) {
+                    continue;
+                }
+                AC_SetLoggingStatus($archiveId, $id, false);
+                AC_SetGraphStatus($archiveId, $id, false);
             }
-            AC_SetLoggingStatus($archiveId, $id, false);
-            AC_SetGraphStatus($archiveId, $id, false);
+
+            IPS_ApplyChanges($archiveId);
         }
-
-        IPS_ApplyChanges($archiveId);
-    }
-
 
         public function ReceiveData($JSONString)
         {

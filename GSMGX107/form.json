@@ -37,8 +37,7 @@
 				{ "label": "48 hours", "value": 172800 },
 				{ "label": "4 days", "value": 345600 }
 				
-        ]},
-		{ "type": "CheckBox", "name": "Logging", "caption": "Logging" }
+        ]}
     ],
     "actions":
     [

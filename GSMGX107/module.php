@@ -10,7 +10,6 @@ declare(strict_types=1);
 
             $this->RegisterPropertyString('PhoneNumber', '+49 0000 0000');
             $this->RegisterPropertyString('Pin', '1513');
-            $this->RegisterPropertyBoolean('Logging', false);
             $this->RegisterPropertyInteger('UpdateInterval', 21600);
             $this->RegisterPropertyInteger('Watchdog', 43200);
 
@@ -51,6 +50,7 @@ declare(strict_types=1);
 
             $this->SetTimerInterval('WatchdogTimer', $this->ReadPropertyInteger('Watchdog') * 1000);
 
+/*
             if ($this->ReadPropertyBoolean('Logging')) {
                 $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
 
@@ -102,7 +102,7 @@ declare(strict_types=1);
 
                 IPS_ApplyChanges($archiveId);
             }
-
+*/
             $this->SetStatus(104);
         }
 
@@ -200,7 +200,7 @@ declare(strict_types=1);
         private function WatcodogEvent()
         {
             $this->SendDebug('WatcodogEvent()', 'Watchdog expired', 0);
-            SetValue($this->GetIDForIdent('ConnectionError'), true);
+            $this->SetValue('ConnectionError', true);
         }
 
         private function startswith($haystack, $needle)

@@ -52,9 +52,9 @@ declare(strict_types=1);
 
             try {
                 $data = [
-                    'sender' => $phoneNumber,
-                    'text'   => $text
-                ];
+            'sender' => $phoneNumber,
+            'text'   => $text
+            ];
 
                 return $this->SendDataToParent(json_encode(['DataID' => '{9402145A-5F74-484D-8F83-4B26C3D36343}', 'Buffer' => $data]));
             } catch (Exception $e) {

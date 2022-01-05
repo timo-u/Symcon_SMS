@@ -106,7 +106,7 @@ declare(strict_types=1);
                 $this->SendDebug('ReceiveData()', 'phonenumber match', 0);
 
                 $text = strtolower($text);
-                $text = str_replace("\r", ' ', $text);
+				$text = preg_replace("/(\r\n)|(\r)|(\n)/u"," ", $text); 
 
                 // Translate Status Message German => English
                 $text = str_replace(' aus ', ' off ', $text);

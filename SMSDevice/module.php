@@ -19,6 +19,12 @@ declare(strict_types=1);
         {
             //Never delete this line!
             parent::ApplyChanges();
+			
+			$phonenumber = $this->ReadPropertyString('PhoneNumber');
+            if ($phonenumber != '+49 0000 0000' && $this->startswith($phonenumber, '+')) {
+
+				$this->SetReceiveDataFilter(".*".str_replace("+", "\+", $phonenumber).".*");
+			}
         }
 
         public function ReceiveData($JSONString)
@@ -67,5 +73,10 @@ declare(strict_types=1);
                 echo 'Exception abgefangen: ',  $e->getMessage(), "\n";
                 return false;
             }
+        }
+		
+        private function startswith($haystack, $needle)
+        {
+            return strpos($haystack, $needle) === 0;
         }
     }

@@ -1,7 +1,7 @@
-### SMSDevice
+### GX107
 
-Das SMS-Device Stellt ein beliebiges Gerät mit SMS-Kommuniaktion dar. Eine vom Gateway empfangene Nachricht wird bei richtiger Telefonnummer auf das SMSDevice weiter geleitet. 
-Im SMSDevice kann ein Script Hinterlegt werden was beim Empfang einer SMS ausgeführt wird. 
+Das GX107 ist ein GSM-Schaltmodul welches bei Conrad Elektronik erhältlich ist. Die Instanz bildet die zwei Ausgangskanäle und den Eingangskanal ab und Zeigt Betriebsspannung und Verbindungsstärke an. 
+Die Instanz funktioniert sowohl für die Geräte GX107 als auch GX107-4G.  
 
 
 #### Einstellungen der Geräte-Instanz
@@ -14,30 +14,41 @@ Die Leerzeichen und Bindestriche in der Telefonnummer werden herausgefiltert.
 ##### Pin
 Pin-Nummer des GSM-Moduls. Die Pin-Nummer wird in jerder Nachricht zur Validierung versendet.
 
-##### Aktualisierungs-Intervall
-Das Aktualisierungs-Intervall gilt für die Abfrage des GSM-Moduls. In dem Dort eingestellten Zyklus wird der Status des GSM-Moduls abgerufen. 
-Wenn hier "deaktiviert" eingestellt ist werden keine selbstständigen Nachrichten an das Modul gesendet. 
+##### Kanal 1 automatisch einschalten
+Wenn dieser Schalter aktiviert ist wird der Ausgang automatisch eingeschaltet wenn eine Status-Nachricht mit ausgeschaltetem Ausgang empfangen wird. 
 
 
-##### Verbindungs-Warnung
-Wird innerhalb der hier eingestellten Zeit keine SMS des GSM-Moduls empfangen wird die Variable Verbindungsfehler gesetzt.
-
+##### Kanal 2 automatisch einschalten
+Wenn dieser Schalter aktiviert ist wird der Ausgang automatisch eingeschaltet wenn eine Status-Nachricht mit ausgeschaltetem Ausgang empfangen wird. 
 
 ##### Übergeorndete Instanz
 Als übergeordnete Instanz wird das Gateway ausgewählt 
-
-
  
 
 #### Setzen der Ausgänge
 ```php
-SMS_GX107SetOutput(11111 /*[Test\SMSDevice]*/, 1 /* Kanal 1 */ , true /* einschalten */);
+SMS_GX107SetOutput(11111, 1 /* Kanal 1 */ , true /* einschalten */);
 
 ```
 
+#### Neustarten eines Ausgangs
+Der ausgewählte Ausgang wird abgeschaltet und nach der im letzten Parameter eingegebenn Wartezeit (in Sekunden) wieder eingeschaltet.  
+```php
+SMS_GX107RestartOutput(11111, 1 /* Kanal 1 */, 30 /*sekunden Wartezeit*/);
+
+``` 
 #### Abfragen des Status
 ```php
-SMS_GX107GetStatus(11111 /*[Test\SMSDevice]*/);
+SMS_GX107GetStatus(11111);
 
 ``` 
 
+#### Logging für Statusvariablen aktivieren 
+```php
+SMS_EnableLogging(11111);
+``` 
+
+#### Logging für Statusvariablen deaktivieren 
+```php
+SMS_DisableLogging(11111);
+``` 

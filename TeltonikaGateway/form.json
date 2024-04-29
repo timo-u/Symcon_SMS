@@ -13,12 +13,12 @@
 		{
 			"type": "ValidationTextBox",
 			"name": "IPAddress",
-			"caption": "IP-Address"
+			"caption": "URL"
 		},
 		{
 			"type": "Select",
 			"name": "ReadMessagesIntervall",
-			"caption": "ReadMessagesIntervall",
+			"caption": "Polling interval",
 			"options": [
 				{
 					"label": "diabled",
@@ -78,6 +78,22 @@
 			"type": "CheckBox",
 			"name": "DisableSending",
 			"caption": "Disable Sending"
+		},
+		{
+			"type": "ExpansionPanel",
+			"caption": "optional SSL settings",
+			"items": [
+				{
+					"type": "CheckBox",
+					"name": "VerifyHost",
+					"caption": "Verify Host"
+				},
+				{
+					"type": "CheckBox",
+					"name": "VerifyPeer",
+					"caption": "Verify Peer"
+				}
+			]
 		}
 	],
 	"actions": [

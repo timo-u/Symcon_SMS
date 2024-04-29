@@ -19,7 +19,7 @@
 			"type": "CheckBox",
 			"name": "AlwaysOn2",
 			"caption": "Channel 2 always on"
-		}			
+		}
 	],
 	"actions": [
 		{

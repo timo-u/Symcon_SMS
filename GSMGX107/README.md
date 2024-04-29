@@ -45,10 +45,10 @@ SMS_GX107GetStatus(11111);
 
 #### Logging für Statusvariablen aktivieren 
 ```php
-SMS_EnableLogging(11111);
+IPS_RequestAction(11111, "EnableLogging", "");
 ``` 
 
 #### Logging für Statusvariablen deaktivieren 
 ```php
-SMS_DisableLogging(11111);
+IPS_RequestAction(11111, "DisableLogging", "");
 ``` 

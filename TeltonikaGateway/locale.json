@@ -21,7 +21,14 @@
 			"10 minutes": "10 Minuten",
 			"15 minutes": "15 Minuten",
 			"30 minutes": "30 Minuten",
-			"60 minutes": "60 Minuten"
+			"60 minutes": "60 Minuten",
+			"send messages": "gesendete Nachrichten",
+			"received messages": "empfangene Nachrichten",
+			"Polling interval": "Abfrageintervall",
+			"Verify Host": "Server Überprüfen",
+			"Verify Peer": "Zertifikat Prüfen",
+			"optional SSL settings": "optionale SSL Einstellungen",
+			"Disable Sending": "Sendesperre"
 		}
 	}
 }

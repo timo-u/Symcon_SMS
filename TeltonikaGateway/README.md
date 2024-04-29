@@ -28,3 +28,8 @@ Wenn das Feld aktiviert ist wird das Senden von SMS blockiert. Unterdrückte SMS
 ```php
 SMS_SendMessage(1111 /*[Teltonika RUT955 SMS Gateway]*/, "+49 176 123456", "Lorem ipsum dolor sit amet" );
 ```
+
+#### Abrufen von Nachrichten
+```php
+SMS_GetMessage(1111 /*[Teltonika RUT955 SMS Gateway]*/);
+```

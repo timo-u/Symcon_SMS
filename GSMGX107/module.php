@@ -1,8 +1,13 @@
 <?php
-
 declare(strict_types=1);
+
+
+require_once(__DIR__.'/../libs/smsutilities.php');
+
     class GX107 extends IPSModule
     {
+		use SmsUtilities;
+		
         public function Create()
         {
             //Never delete this line!
@@ -23,14 +28,15 @@ declare(strict_types=1);
             $this->RegisterVariableBoolean('Out2', $this->Translate('Output 2'), '~Switch', 1);
 
 
-            $this->RegisterTimer("SetOut1Timer", 0, 'SMS_GX107SetOut1($_IPS[\'TARGET\']);');
-            $this->RegisterTimer("SetOut2Timer", 0, 'SMS_GX107SetOut2($_IPS[\'TARGET\']);');
+            $this->RegisterTimer("SetOut1Timer", 0, 'IPS_RequestAction($_IPS["TARGET"], "TimerCallback", "SetOut1Timer");');
+            $this->RegisterTimer("SetOut2Timer", 0, 'IPS_RequestAction($_IPS["TARGET"], "TimerCallback", "SetOut2Timer");');
 
  
             $this->RegisterScript('Out1On', $this->Translate('Output 1 on'), '<? SMS_GX107SetOutput(IPS_GetParent($_IPS[\'SELF\']), 1 , true); ', 20);
             $this->RegisterScript('Out1Off', $this->Translate('Output 1 off'), '<? SMS_GX107SetOutput(IPS_GetParent($_IPS[\'SELF\']), 1 , false); ', 21);
             $this->RegisterScript('Out2On', $this->Translate('Output 2 on'), '<? SMS_GX107SetOutput(IPS_GetParent($_IPS[\'SELF\']), 2 , true); ', 22);
             $this->RegisterScript('Out2Off', $this->Translate('Output 2 off'), '<? SMS_GX107SetOutput(IPS_GetParent($_IPS[\'SELF\']), 2 , false); ', 23);
+
 
         }
 
@@ -54,60 +60,9 @@ declare(strict_types=1);
             $this->SetStatus(104);
         }
 
-        public function EnableLogging()
+
+        private function HandleMessage($text)
         {
-            $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
-
-            $arr = ['Voltage', 'GSM', 'In1', 'Out1', 'Out2'];
-
-            foreach ($arr as &$ident) {
-                $id = @$this->GetIDForIdent($ident);
-
-                if ($id == 0) {
-                    continue;
-                }
-                AC_SetLoggingStatus($archiveId, $id, true);
-                AC_SetAggregationType($archiveId, $id, 0); // 0 Standard, 1 Zähler
-                AC_SetGraphStatus($archiveId, $id, true);
-            }
-
-            IPS_ApplyChanges($archiveId);
-        }
-
-        public function DisableLogging()
-        {
-            $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
-            $arr = ['Voltage', 'GSM', 'In1', 'Out1', 'Out2'];
-
-            foreach ($arr as &$ident) {
-                $id = $this->GetIDForIdent($ident);
-                if ($id == 0) {
-                    continue;
-                }
-                AC_SetLoggingStatus($archiveId, $id, false);
-                AC_SetGraphStatus($archiveId, $id, false);
-            }
-
-            IPS_ApplyChanges($archiveId);
-        }
-
-        public function ReceiveData($JSONString)
-        {
-
-        // Empfangene Daten vom Gateway/Splitter
-            $data = json_decode($JSONString);
-
-            $phoneNumber = str_replace(' ', '', $this->ReadPropertyString('PhoneNumber'));
-            $phoneNumber = str_replace('-', '', $phoneNumber);
-            $data = $data->Buffer;
-
-            $sender = $data->sender;
-            $text = $data->text;
-            $this->SendDebug('ReceiveData()', 'ReceiveData Sender: ' . $sender . ' Text: ' . $text, 0);
-
-            if ($phoneNumber == $sender) {
-                $this->SendDebug('ReceiveData()', 'phonenumber match', 0);
-
                 $text = strtolower($text);
 				$text = preg_replace("/(\r\n)|(\r)|(\n)/u"," ", $text); 
 
@@ -144,8 +99,10 @@ declare(strict_types=1);
                 } else {
                     $this->SendDebug('ReceiveData()', 'Messagecontent does not match!. Message: ' . $text, 0);
                 }
-            }
+            
         }
+		
+		
 
         public function GX107SetOutput(int $number, bool $value)
         {
@@ -154,16 +111,14 @@ declare(strict_types=1);
             if ($number > 2 || $number < 1) {
                 return false;
             }
-
             if ($value) {
                 $action = 'set';
             } else {
                 $action = 'reset';
             }
-
             $pin = $this->ReadPropertyString('Pin');
 
-            return $this->GX107SendMessage($action . ' out' . $number . ' #' . $pin);
+            return $this->SendMessage($action . ' out' . $number . ' #' . $pin);
         }
 
         public function GX107RestartOutput(int $number, int $time)
@@ -173,7 +128,6 @@ declare(strict_types=1);
             if ($number > 2 || $number < 1) {
                 return false;
             }
-
             if ($number ==1) {
                 $this->SetTimerInterval("SetOut1Timer", $time * 1000);
             }
@@ -188,60 +142,83 @@ declare(strict_types=1);
             $this->SendDebug('GX107GetStatus()', 'execute', 0);
             $pin = $this->ReadPropertyString('Pin');
 
-            return $this->GX107SendMessage('Status #' . $pin);
+            return $this->SendMessage('Status #' . $pin);
         }
+	
+		public function RequestAction($Ident, $Value) {
+			// RequestAction wird genutzt um die interenen Funtionen nach außen zu verstecken 
+			switch($Ident) {
+				case "TimerCallback":
+					$this->TimerCallback($Value);
+					break;
+				case "EnableLogging":
+					$this->EnableLogging();
+					break;
+				case "DisableLogging":
+					$this->DisableLogging();
+					break;	
+				case 'Out1':
+					$this->GX107SetOutput(1,$value);
+					break;
+				case 'Out2':
+					$this->GX107SetOutput(2,$value);
+					break;	
+			}
+		}
+		
+		private function TimerCallback(string $TimerID){
+		
+		$this->SetTimerInterval($TimerID, 0);	//den Timer stoppen => Einmaliges Ereignis
 
-        public function GX107SendMessage(string $text)
+			switch($TimerID){ 					// Prüfen, welcher Timer ausgelöst wurde.				
+				case "SetOut1Timer":
+					$this->SendDebug('SetOut1()', '(TimerEvent)', 0);
+					$this->GX107SetOutput(1,true);
+					break;
+							
+				case "SetOut2Timer":
+					$this->SendDebug('SetOut2()', '(TimerEvent)', 0);
+					$this->GX107SetOutput(2,true);
+					break;
+			}				
+		}
+		
+		
+        private function EnableLogging()
         {
-            $this->SendDebug('GX107SendMessage()', 'text: "' . $text . '"', 0);
-            $phoneNumber = str_replace(' ', '', $this->ReadPropertyString('PhoneNumber'));
-            $phoneNumber = str_replace('-', '', $phoneNumber);
+            $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
 
-            try {
-                $data = [
-                    'sender' => $phoneNumber,
-                    'text'   => $text
-                ];
-                $this->SendDebug('GX107SetOutput()', 'SendDataToParent: ' . json_encode(['Buffer' => $data]), 0);
-                return $this->SendDataToParent(json_encode(['DataID' => '{9402145A-5F74-484D-8F83-4B26C3D36343}', 'Buffer' => $data]));
-            } catch (Exception $e) {
-                $this->SendDebug('GX107SetOutput()', 'Exception: ' . $e->getMessage(), 0);
-                return false;
+            $arr = ['Voltage', 'GSM', 'In1', 'Out1', 'Out2'];
+
+            foreach ($arr as &$ident) {
+                $id = @$this->GetIDForIdent($ident);
+
+                if ($id == 0) {
+                    continue;
+                }
+                AC_SetLoggingStatus($archiveId, $id, true);
+                AC_SetAggregationType($archiveId, $id, 0); // 0 Standard, 1 Zähler
+                AC_SetGraphStatus($archiveId, $id, true);
             }
+
+            IPS_ApplyChanges($archiveId);
         }
 
-        public function GX107SetOut1()
+        private function DisableLogging()
         {
-            $this->SendDebug('SetOut1()', '(TimerEvent)', 0);
-            $this->SetTimerInterval("SetOut1Timer", 0);
-            return $this->GX107SetOutput(1,true);
-        }
+            $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
+            $arr = ['Voltage', 'GSM', 'In1', 'Out1', 'Out2'];
 
-        public function GX107SetOut2()
-        {
-            $this->SendDebug('SetOut2()', '(TimerEvent)', 0);
-            $this->SetTimerInterval("SetOut2Timer", 0);
-            return $this->GX107SetOutput(2,true);
-        }
-
-    
-        private function startswith($haystack, $needle)
-        {
-            return strpos($haystack, $needle) === 0;
-        }
-
-        private function between($start, $end, $content)
-        {
-            if (strpos($content, $start) == false) {
-                return '';
+            foreach ($arr as &$ident) {
+                $id = $this->GetIDForIdent($ident);
+                if ($id == 0) {
+                    continue;
+                }
+                AC_SetLoggingStatus($archiveId, $id, false);
+                AC_SetGraphStatus($archiveId, $id, false);
             }
 
-            $return = substr($content, stripos($content, $start) + strlen($start));
-
-            if (strlen($end) != 0) {
-                $return = substr($return, 0, stripos($return, $end));
-            }
-
-            return trim(preg_replace('#\r|\n#', '', $return), ' ');
+            IPS_ApplyChanges($archiveId);
         }
+		
     }

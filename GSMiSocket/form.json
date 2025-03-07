@@ -1,0 +1,43 @@
+{
+	"elements": [
+		{
+			"type": "ValidationTextBox",
+			"name": "PhoneNumber",
+			"caption": "Phone Number"
+		},
+		{
+			"type": "ValidationTextBox",
+			"name": "Pin",
+			"caption": "Pin"
+		}
+	],
+	"actions": [
+		{
+			"type": "Button",
+			"label": "Output ON",
+			"onClick": "if(SMS_iSocketSetOutput($id,  true)) echo 'OK';"
+		},
+		{
+			"type": "Button",
+			"label": "Output OFF",
+			"onClick": "if(SMS_iSocketSetOutput($id,  false)) echo 'OK';"
+		},
+		{
+			"type": "Button",
+			"label": "Output Reset",
+			"onClick": "if(SMS_iSocketRestart($id)) echo 'OK';"
+		},
+		{
+			"type": "Button",
+			"label": "Get Status",
+			"onClick": "if(SMS_iSocketGetStatus($id)) echo 'OK';"
+		}
+	],
+	"status": [
+		{
+			"code": 204,
+			"icon": "error",
+			"caption": "Wrong Phone Number format"
+		}
+	]
+}

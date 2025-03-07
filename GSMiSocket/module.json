@@ -1,0 +1,17 @@
+{
+	"id": "{7093C406-1E68-10C5-8358-6F96CFF816E3}",
+	"name": "iSocket",
+	"type": 3,
+	"vendor": "iSocket",
+	"aliases": [
+		"iSocket"
+	],
+	"parentRequirements": [
+		"{9402145A-5F74-484D-8F83-4B26C3D36343}"
+	],
+	"childRequirements": [],
+	"implemented": [
+		"{C78CF679-C945-463E-9F2C-10A9FAD05DD3}"
+	],
+	"prefix": "SMS"
+}

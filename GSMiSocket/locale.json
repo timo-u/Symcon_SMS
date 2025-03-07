@@ -1,0 +1,14 @@
+{
+	"translations": {
+		"de": {
+			"Phone Number": "Telefonnummer",
+			"Output ON": "Ausgang ein",
+			"Output OFF": "Ausgang aus",
+			"Output Reset": "Ausgang neustart",
+			"Get Status": "Status anfordern",
+			"Wrong Phone Number format": "Falsches Telefonnummern-Format",
+			"GSM": "GSM",
+			"Output": "Ausgang"
+		}
+	}
+}

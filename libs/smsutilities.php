@@ -14,7 +14,7 @@ trait SMSUtilities
         if ($phonenumber == '+49 0000 0000' || !$this->startswith($phonenumber, '+')) {
             $this->SetStatus(204);
         } else {
-            $this->SetReceiveDataFilter(".*".str_replace("+", "\+", $phonenumber).".*");
+            $this->SetReceiveDataFilter(".*".str_replace(array("+"," ","-"), array("\+","",""), $phonenumber).".*");
         }
 
         $this->SetStatus(104);

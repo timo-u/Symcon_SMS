@@ -1,0 +1,121 @@
+{
+    "id": "{271522B8-B12A-D58C-581F-CEC24686A30D}",
+    "caption": "Send Message extended",
+    "form": [
+        {
+            "type": "ValidationTextBox",
+            "name": "NUMBER",
+            "caption": "Number"
+        },
+        {
+            "type": "ValidationTextBox",
+            "name": "MESSAGE",
+            "caption": "Message"
+        },
+        {
+            "type": "Select",
+			"name": "MODE",
+			"caption": "Mode",
+			"options": [
+				{
+					"caption": "default",
+					"value": -1
+				},
+				{
+					"caption": "primary & secondary",
+					"value": 0
+				},
+				{
+					"caption": "only primary",
+					"value": 1
+				},
+				{
+					"caption": "only secondary",
+					"value": 2
+				},
+				{
+					"caption": "round robin",
+					"value": 3
+				}
+			]
+        },
+        {
+            "type": "Select",
+			"name": "RETRY",
+			"caption": "Retry",
+			"options": [
+				{
+					"caption": "default",
+					"value": -1
+				},
+				{
+					"caption": "1",
+					"value": 1
+				},
+				{
+					"caption": "2",
+					"value": 2
+				},
+				{
+					"caption": "3",
+					"value": 3
+				},
+				{
+					"caption": "4",
+					"value": 4
+				},
+				{
+					"caption": "5",
+					"value": 5
+				},
+				{
+					"caption": "6",
+					"value": 6
+				},
+				{
+					"caption": "7",
+					"value": 7
+				},
+				{
+					"caption": "8",
+					"value": 8
+				},
+				{
+					"caption": "9",
+					"value": 9
+				},
+				{
+					"caption": "10",
+					"value": 10
+				}
+			]
+        }
+		
+    ],
+    "action": "SMS_GatewaySendMessageEx($_IPS['TARGET'],$_IPS['NUMBER'], $_IPS['MESSAGE'], $_IPS['MODE'], $_IPS['RETRY']);",
+    "restrictions": {
+        "objectType": [
+            1
+        ],
+        "variablmoduleIDeType": [
+            "{6B0994E8-1D1E-84E4-90E5-23C6F86F8F33}"
+        ]
+    },
+    "priority": 10,
+    "locale": {
+        "de": {
+            "Send Message extended": "Erweiterte Nachricht senden",
+            "Number": "Nummer",
+            "Message": "Nachricht",
+			"Mode": "Modus",
+			"default": "voreingestellt",
+			"primary & secondary": "primär und sekundär",
+			"only primary": "nur primär",
+			"only secondary": "nur sekundär",
+			"round robin": "Round Robin ",
+			"Retry": "Wiederholen",
+            "Send Message '{MESSAGE}' to '{NUMBER}' in mode '{MODE}' with '{RETRY}' retrys.'": "Sende Nachricht '{MESSAGE}' an '{NUMBER}' im Modus '{MODE}' mit '{RETRY}' Sendeversuchen."
+        }
+    },
+    "format": "Send Message '{MESSAGE}' to '{NUMBER}' in mode '{MODE}' with '{RETRY}' retrys."
+}

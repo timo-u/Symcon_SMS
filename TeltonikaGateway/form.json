@@ -1,19 +1,162 @@
 {
 	"elements": [
 		{
-			"type": "ValidationTextBox",
-			"name": "SMSUsername",
-			"caption": "username"
+			"type": "CheckBox",
+			"name": "Active",
+			"caption": "Active"
 		},
 		{
-			"type": "PasswordTextBox",
-			"name": "SMSPassword",
-			"caption": "password"
+			"type": "ExpansionPanel",
+			"caption": "Primary Gateway",
+			"expanded": false,
+			"items": [
+				{
+					"type": "ValidationTextBox",
+					"name": "Primary_Host",
+					"caption": "Host"
+				},
+				{
+					"type": "NumberSpinner",
+					"name": "Primary_Port",
+					"caption": "Port",
+					"suffix": ""
+				},
+				{
+					"type": "ValidationTextBox",
+					"name": "Primary_Username",
+					"caption": "username"
+				},
+				{
+					"type": "PasswordTextBox",
+					"name": "Primary_Password",
+					"caption": "password"
+				},
+				{
+					"type": "NumberSpinner",
+					"name": "Primary_Timeout",
+					"caption": "Timeout",
+					"suffix": "s",
+					"minimum": 100,
+					"maximum": 60000
+				},
+				{
+					"type": "Select",
+					"name": "Primary_Modem",
+					"caption": "Modem",
+					"options": [
+						{
+							"label": "1-1 (Primary RUT360, RUT955)",
+							"value": "1-1"
+						},
+						{
+							"label": "2-1 (Primary RUTX50)",
+							"value": "2-1"
+						},
+						{
+							"label": "3-1 (Primary RUTX11, RUTX12, TRB500)",
+							"value": "3-1"
+						},
+						{
+							"label": "1-1.2 (Secondary RUTX12)",
+							"value": "1-1.2"
+						}
+					]
+				},
+				{
+					"type": "CheckBox",
+					"name": "Primary_Ssl",
+					"caption": "SSL"
+				},
+				{
+					"type": "CheckBox",
+					"name": "Primary_VerifyHost",
+					"caption": "Verify Host"
+				},
+				{
+					"type": "CheckBox",
+					"name": "Primary_VerifyPeer",
+					"caption": "Verify Peer"
+				}
+			]
 		},
 		{
-			"type": "ValidationTextBox",
-			"name": "IPAddress",
-			"caption": "URL"
+			"type": "ExpansionPanel",
+			"caption": "Secondary Gateway",
+			"expanded": false,
+			"items": [
+				{
+					"type": "CheckBox",
+					"name": "Secondary_Enabled",
+					"caption": "secondary gateway enabled"
+				},
+				{
+					"type": "ValidationTextBox",
+					"name": "Secondary_Host",
+					"caption": "Host"
+				},
+				{
+					"type": "NumberSpinner",
+					"name": "Secondary_Port",
+					"caption": "Port",
+					"suffix": ""
+				},
+				{
+					"type": "ValidationTextBox",
+					"name": "Secondary_Username",
+					"caption": "username"
+				},
+				{
+					"type": "PasswordTextBox",
+					"name": "Secondary_Password",
+					"caption": "password"
+				},
+				{
+					"type": "NumberSpinner",
+					"name": "Secondary_Timeout",
+					"caption": "Timeout",
+					"suffix": "ms",
+					"minimum": 100,
+					"maximum": 60000
+				},
+				{
+					"type": "Select",
+					"name": "Secondary_Modem",
+					"caption": "Modem",
+					"options": [
+						{
+							"label": "1-1 (Primary RUT360, RUT955)",
+							"value": "1-1"
+						},
+						{
+							"label": "2-1 (Primary RUTX50)",
+							"value": "2-1"
+						},
+						{
+							"label": "3-1 (Primary RUTX11, RUTX12, TRB500)",
+							"value": "3-1"
+						},
+						{
+							"label": "1-1.2 (Secondary RUTX12)",
+							"value": "1-1.2"
+						}
+					]
+				},
+				{
+					"type": "CheckBox",
+					"name": "Secondary_Ssl",
+					"caption": "SSL"
+				},
+				{
+					"type": "CheckBox",
+					"name": "Secondary_VerifyHost",
+					"caption": "Verify Host"
+				},
+				{
+					"type": "CheckBox",
+					"name": "Secondary_VerifyPeer",
+					"caption": "Verify Peer"
+				}
+			]
 		},
 		{
 			"type": "Select",
@@ -75,69 +218,154 @@
 			]
 		},
 		{
+			"type": "Select",
+			"name": "Mode",
+			"caption": "Mode",
+			"options": [
+				{
+					"caption": "primary & secondary",
+					"value": 0
+				},
+				{
+					"caption": "only primary",
+					"value": 1
+				},
+				{
+					"caption": "only secondary",
+					"value": 2
+				},
+				{
+					"caption": "round robin",
+					"value": 3
+				}
+			]
+		},
+		{
+			"type": "NumberSpinner",
+			"name": "Retry",
+			"caption": "retry",
+			"suffix": "",
+			"minimum": 1,
+			"maximum": 10
+		},
+		{
+			"type": "ValidationTextBox",
+			"name": "WebHookToken",
+			"caption": "Webhook Token",
+			"width": "400px"
+		},
+		{
 			"type": "CheckBox",
 			"name": "DisableSending",
 			"caption": "Disable Sending"
-		},
-		{
-			"type": "ExpansionPanel",
-			"caption": "optional SSL settings",
-			"items": [
-				{
-					"type": "CheckBox",
-					"name": "VerifyHost",
-					"caption": "Verify Host"
-				},
-				{
-					"type": "CheckBox",
-					"name": "VerifyPeer",
-					"caption": "Verify Peer"
-				}
-			]
 		}
 	],
 	"actions": [
 		{
-			"type": "Button",
-			"label": "Check Authentication",
-			"onClick": "echo SMS_CheckConnection($id);"
+			"type": "RowLayout",
+			"items": [
+				{
+					"type": "ValidationTextBox",
+					"name": "TestNumber",
+					"caption": "Number"
+				},
+				{
+					"type": "ValidationTextBox",
+					"name": "TestMessage",
+					"caption": "Message"
+				},
+				{
+					"type": "Button",
+					"label": "Send Test Message",
+					"onClick": "echo SMS_GatewaySendMessage($id, $TestNumber, $TestMessage);"
+				}
+			]
 		},
 		{
 			"type": "Button",
-			"label": "Read Messages",
-			"onClick": "echo SMS_GetMessages($id);"
+			"label": "Read Messages manually",
+			"onClick": "IPS_RequestAction($id, \"GetMessages\", '0');"
 		},
 		{
-			"type": "ValidationTextBox",
-			"name": "TestNumber",
-			"caption": "Number"
+			"type": "ExpansionPanel",
+			"caption": "Primary Gateway",
+			"expanded": true,
+			"items": [
+				{
+					"type": "RowLayout",
+					"items": [
+						{
+							"type": "Button",
+							"label": "Login",
+							"onClick": "IPS_RequestAction($id, \"Login\", '1');"
+						},
+						{
+							"type": "Button",
+							"label": "Configuration Page",
+							"onClick": "echo SMS_GetConfiguratationPage($id,1);"
+						},
+						{
+							"type": "Button",
+							"label": "Restart",
+							"onClick": "IPS_RequestAction($id, \"Reboot\", '2');"
+						}
+					]
+				}
+			]
 		},
 		{
-			"type": "ValidationTextBox",
-			"name": "TestMessage",
-			"caption": "Message"
-		},
-		{
-			"type": "Button",
-			"label": "Send Test Message",
-			"onClick": "echo SMS_SendMessageTo($id, $TestNumber, $TestMessage);"
+			"type": "ExpansionPanel",
+			"caption": "Secondary Gateway",
+			"expanded": true,
+			"items": [
+				{
+					"type": "RowLayout",
+					"items": [
+						{
+							"type": "Button",
+							"label": "Login",
+							"onClick": "IPS_RequestAction($id, \"Login\", '2');"
+						},
+						{
+							"type": "Button",
+							"label": "Configuration Page",
+							"onClick": "echo SMS_GetConfiguratationPage($id,2);"
+						},
+						{
+							"type": "Button",
+							"label": "Restart",
+							"onClick": "IPS_RequestAction($id, \"Reboot\", '2');"
+						}
+					]
+				}
+			]
 		}
 	],
 	"status": [
 		{
 			"code": 102,
 			"icon": "active",
-			"caption": "Login information valid"
+			"caption": "Active"
 		},
 		{
 			"code": 201,
 			"icon": "error",
-			"caption": "Authentication failed"
+			"caption": "Connection failed"
 		},
 		{
 			"code": 202,
 			"icon": "error",
 			"caption": "Connection Failed"
+		},
+		{
+			"code": 203,
+			"icon": "error",
+			"caption": "API Version Conflict"
+		},
+		{
+			"code": 204,
+			"icon": "error",
+			"caption": "Login failed for any reason"
 		}
 	]
 }

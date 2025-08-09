@@ -18,7 +18,7 @@ class iSocket extends IPSModule
         $this->RegisterPropertyString('PhoneNumber', '+49 0000 0000');
         $this->RegisterPropertyString('Pin', '');
 
-        $this->ConnectParent('{E524191D-102D-4619-BFEF-126A4BE49F88}');
+        $this->ConnectParent('{6B0994E8-1D1E-84E4-90E5-23C6F86F8F33}');
 
         $this->RegisterVariableInteger('GSM', $this->Translate('GSM'), 'GSM_dbm', 10);
         $this->RegisterVariableBoolean('Out1', $this->Translate('Output'), '~Switch', 1);

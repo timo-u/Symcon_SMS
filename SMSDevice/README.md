@@ -31,7 +31,7 @@ Als übergeordnete Instanz wird das Gateway ausgewählt
 
 #### Senden von Nachrichten
 ```php
-SMS_DeviceSendMessage(11111 /*[Test\SMSDevice]*/, "Lorem ipsum dolor sit amet");
+SMS_SendMessage(11111 /*[Test\SMSDevice]*/, "Lorem ipsum dolor sit amet");
 ```
 Eine Nummer ist nicht nötig, da diese bereits in der Instanz hinterlegt ist.
 

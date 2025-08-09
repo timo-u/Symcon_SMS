@@ -1,17 +1,19 @@
 {
 	"translations": {
 		"de": {
+			"Active": "Aktiv",
+			"Primary Gateway": "Primäres Gateway",
+			"Secondary Gateway": "Sekundäres Gateway",
+			"Host": "Host",
+			"Port": "Port",
 			"username": "Benutzername",
 			"password": "Passwort",
-			"IP-Address": "IP-Adresse",
-			"Test  Authentication": "Authenifizierung testen",
-			"Get Current IP (IPv4)": "Akutelle IP abrufen (IPv4)",
-			"Get Current IP (IPv6)": "Akutelle IP abrufen (IPv6)",
-			"Update DNS Record": "DNS-Eintrag akutalisieren",
-			"Authentication failed": "Authentifikation fehlgeschlagen",
-			"Login information valid": "Authentifikation erfolgreich",
-			"Record-Update was not successfull!": "Update war nicht erfolgreich",
-			"Enable Proxy": "Proxy-Dienst aktivieren",
+			"Timeout": "Zeitüberschreitung",
+			"SSL": "SSL",
+			"Verify Host": "Server Überprüfen",
+			"Verify Peer": "Zertifikat Prüfen",
+			"secondary gateway enabled": "Sekundäres Gateway aktiviert",
+			"Polling interval": "Abfrageintervall",
 			"diabled": "deaktiviert",
 			"10 seconds": "10 Sekunden",
 			"30 seconds": "30 Sekunden",
@@ -22,13 +24,30 @@
 			"15 minutes": "15 Minuten",
 			"30 minutes": "30 Minuten",
 			"60 minutes": "60 Minuten",
-			"send messages": "gesendete Nachrichten",
-			"received messages": "empfangene Nachrichten",
-			"Polling interval": "Abfrageintervall",
-			"Verify Host": "Server Überprüfen",
-			"Verify Peer": "Zertifikat Prüfen",
-			"optional SSL settings": "optionale SSL Einstellungen",
-			"Disable Sending": "Sendesperre"
+			"Mode": "Modus",
+			"primary & secondary": "primär und sekundär",
+			"only primary": "nur primär",
+			"only secondary": "nur sekundär",
+			"round robin": "Round Robin ",
+			"retry": "Wiederholen",
+			"Disable Sending": "Sendesperre",
+			"Configuration Page":"Konfigurationsseite",
+			"Check Authentication": "Anmeldung überprüfen",
+			"Read Messages manually": "Nachrichten manuell Empfangen",
+			"Number": "Nummer",
+			"Message": "Nachricht",
+			"Send Test Message": "Testnachricht senden",
+
+			"Online": "Online",
+			"Offline": "Offline",
+
+			"primary connection": "Primäre Verbindung",
+			"primary received messages": "Primär empfangene Nachrichten",
+			"primary send messages": "Primär gesendete Nachrichten",
+			"secondary connection": "Sekundäre Verbindung",
+			"secondary received messages": "Sekundär empfangene Nachrichten",
+			"secondary send messages": "Sekundär gesendete Nachrichten"
+
 		}
 	}
 }

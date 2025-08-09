@@ -1,0 +1,34 @@
+{
+	"translations": {
+		"de": {
+			"username": "Benutzername",
+			"password": "Passwort",
+			"IP-Address": "IP-Adresse",
+			"Test  Authentication": "Authenifizierung testen",
+			"Get Current IP (IPv4)": "Akutelle IP abrufen (IPv4)",
+			"Get Current IP (IPv6)": "Akutelle IP abrufen (IPv6)",
+			"Update DNS Record": "DNS-Eintrag akutalisieren",
+			"Authentication failed": "Authentifikation fehlgeschlagen",
+			"Login information valid": "Authentifikation erfolgreich",
+			"Record-Update was not successfull!": "Update war nicht erfolgreich",
+			"Enable Proxy": "Proxy-Dienst aktivieren",
+			"diabled": "deaktiviert",
+			"10 seconds": "10 Sekunden",
+			"30 seconds": "30 Sekunden",
+			"60 seconds": "60 Sekunden",
+			"2 minutes": "2 Minuten",
+			"5 minutes": "5 Minuten",
+			"10 minutes": "10 Minuten",
+			"15 minutes": "15 Minuten",
+			"30 minutes": "30 Minuten",
+			"60 minutes": "60 Minuten",
+			"send messages": "gesendete Nachrichten",
+			"received messages": "empfangene Nachrichten",
+			"Polling interval": "Abfrageintervall",
+			"Verify Host": "Server Überprüfen",
+			"Verify Peer": "Zertifikat Prüfen",
+			"optional SSL settings": "optionale SSL Einstellungen",
+			"Disable Sending": "Sendesperre"
+		}
+	}
+}

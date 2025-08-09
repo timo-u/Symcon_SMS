@@ -12,7 +12,7 @@ declare(strict_types=1);
             $this->RegisterPropertyInteger('ReceiveObjectID', 0);
             $this->RegisterPropertyString('TestMessage', 'Test');
 
-            $this->ConnectParent('{E524191D-102D-4619-BFEF-126A4BE49F88}');
+            $this->ConnectParent('{6B0994E8-1D1E-84E4-90E5-23C6F86F8F33}');
         }
 
         public function ApplyChanges()

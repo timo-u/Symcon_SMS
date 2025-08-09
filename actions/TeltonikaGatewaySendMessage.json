@@ -1,0 +1,35 @@
+{
+    "id": "{968FD661-9C78-2C16-3BB0-D496718661FE}",
+    "caption": "Send Message",
+    "form": [
+        {
+            "type": "ValidationTextBox",
+            "name": "NUMBER",
+            "caption": "Number"
+        },
+        {
+            "type": "ValidationTextBox",
+            "name": "MESSAGE",
+            "caption": "Message"
+        }
+    ],
+    "action": "SMS_GatewaySendMessage($_IPS['TARGET'],$_IPS['NUMBER'], $_IPS['MESSAGE']);",
+    "restrictions": {
+        "objectType": [
+            1
+        ],
+        "variablmoduleIDeType": [
+            "{6B0994E8-1D1E-84E4-90E5-23C6F86F8F33}"
+        ]
+    },
+    "priority": 10,
+    "locale": {
+        "de": {
+            "Send Message": "Nachricht senden",
+            "Number": "Nummer",
+            "Message": "Nachricht",
+            "Send Message '{MESSAGE}' to '{NUMBER}'": "Sende Nachricht '{MESSAGE}' an '{NUMBER}'"
+        }
+    },
+    "format": "Send Message '{MESSAGE}' to '{NUMBER}'"
+}

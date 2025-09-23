@@ -31,6 +31,7 @@ declare(strict_types=1);
         {
 
         // Empfangene Daten vom Gateway/Splitter
+			$this->SendDebug(__FUNCTION__, ' $JSONString: ' . $JSONString, 0);
             $data = json_decode($JSONString);
 
             $phoneNumber = str_replace(' ', '', $this->ReadPropertyString('PhoneNumber'));
@@ -41,7 +42,7 @@ declare(strict_types=1);
             $text = $data->text;
 
             if ($phoneNumber == $sender || $phoneNumber == '*') {
-                $this->SendDebug('ReceiveData()', 'ReceiveData Sender: ' . $sender . ' Text: ' . $text, 0);
+                $this->SendDebug(__FUNCTION__, 'ReceiveData Sender: ' . $sender . ' Text: ' . $text, 0);
 
                 $id = $this->ReadPropertyInteger('ReceiveObjectID');
 

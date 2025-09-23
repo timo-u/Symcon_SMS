@@ -45,7 +45,7 @@
 					"caption": "Modem",
 					"options": [
 						{
-							"label": "1-1 (Primary RUT360, RUT955)",
+							"label": "1-1 (Primary RUT360)",
 							"value": "1-1"
 						},
 						{
@@ -59,6 +59,10 @@
 						{
 							"label": "1-1.2 (Secondary RUTX12)",
 							"value": "1-1.2"
+						},
+						{
+							"label": "1-1.4 (Primary RUT955)",
+							"value": "1-1.4"
 						}
 					]
 				},
@@ -214,7 +218,24 @@
 				{
 					"label": "5 minutes",
 					"value": 300
+				},
+				{
+					"label": "10 minutes",
+					"value": 600
+				},
+				{
+					"label": "15 minutes",
+					"value": 900
+				},
+				{
+					"label": "30 minutes",
+					"value": 1800
+				},
+				{
+					"label": "60 minutes",
+					"value": 3600
 				}
+
 			]
 		},
 		{
